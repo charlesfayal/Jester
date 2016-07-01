@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		563271BF1D2490A700790830 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271BE1D2490A700790830 /* MainScreenViewController.swift */; };
+		563271C11D2490CB00790830 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271C01D2490CB00790830 /* LogInViewController.swift */; };
+		563271C31D2490ED00790830 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271C21D2490ED00790830 /* CommentsViewController.swift */; };
+		563271C51D24910900790830 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271C41D24910900790830 /* CategoriesViewController.swift */; };
+		563271C71D2494A400790830 /* LikedPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271C61D2494A400790830 /* LikedPostsViewController.swift */; };
+		563271CF1D25832200790830 /* ContentProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271CE1D25832200790830 /* ContentProfileView.swift */; };
+		563271D11D2591E200790830 /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271D01D2591E100790830 /* CategoriesTableViewCell.swift */; };
+		563271D31D25C8E400790830 /* PostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271D21D25C8E400790830 /* PostInfoViewController.swift */; };
+		563271D51D25CB8700790830 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271D41D25CB8700790830 /* CommentsTableViewCell.swift */; };
 		56357D9A1D0FBD3900AD10B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56357D991D0FBD3900AD10B7 /* AppDelegate.swift */; };
 		56357DA11D0FBD3900AD10B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56357D9F1D0FBD3900AD10B7 /* Main.storyboard */; };
 		56357DA31D0FBD3900AD10B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56357DA21D0FBD3900AD10B7 /* Assets.xcassets */; };
@@ -14,6 +23,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		563271BE1D2490A700790830 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		563271C01D2490CB00790830 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		563271C21D2490ED00790830 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		563271C41D24910900790830 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		563271C61D2494A400790830 /* LikedPostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikedPostsViewController.swift; sourceTree = "<group>"; };
+		563271CE1D25832200790830 /* ContentProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentProfileView.swift; sourceTree = "<group>"; };
+		563271D01D2591E100790830 /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
+		563271D21D25C8E400790830 /* PostInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostInfoViewController.swift; sourceTree = "<group>"; };
+		563271D41D25CB8700790830 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		56357D961D0FBD3900AD10B7 /* Jester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56357D991D0FBD3900AD10B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56357DA01D0FBD3900AD10B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,6 +71,15 @@
 			isa = PBXGroup;
 			children = (
 				56357D991D0FBD3900AD10B7 /* AppDelegate.swift */,
+				563271C01D2490CB00790830 /* LogInViewController.swift */,
+				563271BE1D2490A700790830 /* MainScreenViewController.swift */,
+				563271C21D2490ED00790830 /* CommentsViewController.swift */,
+				563271D41D25CB8700790830 /* CommentsTableViewCell.swift */,
+				563271C41D24910900790830 /* CategoriesViewController.swift */,
+				563271D01D2591E100790830 /* CategoriesTableViewCell.swift */,
+				563271C61D2494A400790830 /* LikedPostsViewController.swift */,
+				563271CE1D25832200790830 /* ContentProfileView.swift */,
+				563271D21D25C8E400790830 /* PostInfoViewController.swift */,
 				56357D9F1D0FBD3900AD10B7 /* Main.storyboard */,
 				56357DA21D0FBD3900AD10B7 /* Assets.xcassets */,
 				56357DA41D0FBD3900AD10B7 /* LaunchScreen.storyboard */,
@@ -133,7 +160,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				563271C31D2490ED00790830 /* CommentsViewController.swift in Sources */,
+				563271D11D2591E200790830 /* CategoriesTableViewCell.swift in Sources */,
 				56357D9A1D0FBD3900AD10B7 /* AppDelegate.swift in Sources */,
+				563271BF1D2490A700790830 /* MainScreenViewController.swift in Sources */,
+				563271C11D2490CB00790830 /* LogInViewController.swift in Sources */,
+				563271C71D2494A400790830 /* LikedPostsViewController.swift in Sources */,
+				563271D31D25C8E400790830 /* PostInfoViewController.swift in Sources */,
+				563271D51D25CB8700790830 /* CommentsTableViewCell.swift in Sources */,
+				563271CF1D25832200790830 /* ContentProfileView.swift in Sources */,
+				563271C51D24910900790830 /* CategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +287,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Jester/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Charles.Jester;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -265,6 +302,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Jester/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Charles.Jester;
 				PRODUCT_NAME = "$(TARGET_NAME)";

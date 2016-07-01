@@ -11,9 +11,7 @@ import UIKit
 class CommentsTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var CreatorLabel: UILabel!
-    
-    @IBOutlet weak var commentLabel: UITextView!
-    
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var creatorLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
 }

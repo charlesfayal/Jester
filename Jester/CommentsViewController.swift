@@ -9,22 +9,39 @@
 import UIKit
 
 class CommentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    var comments = ["Dude that was a sweeet photo", " that was like tottally rad", " I cant believe what I am seeing yo"]
+    var comments = ["Dude that was a sweeet photo", " That was like tottally rad", " I cant believe what I am seeing yo"]
+    var creators = ["Chf11002", "SteveyJeezy", " RonDog"]
+    var times = ["5m", "6m","1h9m"]
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBAction func returnButton(sender: AnyObject) {
         self.performSegueWithIdentifier("unwindToMainScreen", sender: self)
     }
     
+    //MARK: Table View Functions 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        comments.count
+        return comments.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-         let cell:CategoriesTableViewCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell") as! CategoriesTableViewCell
-        
+         let cell:CommentsTableViewCell = tableView.dequeueReusableCellWithIdentifier("commentsCell") as! CommentsTableViewCell
+        var comment = comments[indexPath.row]
+        print(comment)
+        cell.commentLabel.text = comments[indexPath.row]
+        cell.creatorLabel.text = creators[indexPath.row]
+        cell.timeLabel.text = times[indexPath.row]
+        return cell
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+
     }
 
     override func didReceiveMemoryWarning() {

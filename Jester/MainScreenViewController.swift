@@ -21,6 +21,13 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     {
     //reload content
     }
+    @IBOutlet weak var categoriesOutlet: UIButton!
+    
+    @IBOutlet weak var postButtonOutlet: UIButton!
+   
+    @IBAction func postButton(sender: AnyObject) {
+        self.performSegueWithIdentifier("toPost", sender: self)
+    }
 
     @IBAction func categoriesButton(sender: AnyObject)
     {
@@ -77,11 +84,25 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad(){
         super.viewDidLoad()
         //UI runtime changes
-        buttonsView.layer.borderWidth = 1
-        buttonsView.layer.borderColor = UIColor.grayColor().CGColor
+        //buttonsView.layer.borderWidth = 1
+        //buttonsView.layer.borderColor = UIColor.grayColor().CGColor
+        
+        
+        postButtonOutlet.layer.borderWidth = 1
+        postButtonOutlet.layer.borderColor = UIColor.lightGrayColor().CGColor
+        postButtonOutlet.layer.cornerRadius  = 5
+        
+        let frame = categoriesOutlet.frame
+        categoriesOutlet.frame = CGRectMake(frame.minX,frame.minY,self.view.frame.width / 2, frame.height)
+        categoriesOutlet.layer.borderWidth = 1
+        categoriesOutlet.layer.cornerRadius = 5
+        
+        categoriesOutlet.layer.borderColor = UIColor.lightGrayColor().CGColor
+        
+        
         
         originalCenter = profileView.center
-        //Swipe Gesture
+        // Gestures
         let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasDragged(_:)))
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasTapped(_:)))
         //Add a profile

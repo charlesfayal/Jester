@@ -11,9 +11,26 @@ import UIKit
 class CategoriesTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var selectOutlet: UIButton!
+    
+    var categorySelected = false
     @IBAction func selectButton(sender: AnyObject) {
-        print("selected!")
-        selectOutlet.imageView!.image = UIImage(named: "selected box") // Not working
+        //Change button image from selected to unselected and vice versa
+        if categorySelected {
+            categorySelected = false
+            if let image = UIImage(named: "unselected box"){
+                selectOutlet.setImage(image, forState: .Normal)
+            } else {
+                print("didnt exist")
+            }
+        } else {
+            categorySelected = true
+            if let image = UIImage(named: "selected box"){
+                selectOutlet.setImage(image, forState: .Normal)
+            } else {
+                print("didnt exist")
+            }
+        }
+    
     }
 
 }

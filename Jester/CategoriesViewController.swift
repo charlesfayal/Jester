@@ -10,6 +10,10 @@ import UIKit
 
 class CategoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var categories = ["Humor", "Sports", "Action", "Stories","Daily Funny"]
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBAction func returnButton(sender: AnyObject) {
         self.performSegueWithIdentifier("unwindToMainScreen", sender: self)
     
@@ -27,7 +31,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func didReceiveMemoryWarning() {

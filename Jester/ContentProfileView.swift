@@ -20,11 +20,16 @@ class ContentProfileView: UIView {
         nibSetup()
     }
    private func nibSetup() {
+    //if we want to add shadow I need to make a shadow view
+    //self.layer.shadowColor = UIColor.purpleColor().CGColor
+    //self.layer.shadowRadius = 3
+    
     var yLocation:CGFloat = 0
     self.backgroundColor = UIColor.whiteColor()
     self.layer.borderWidth = 1
-    self.layer.borderColor = UIColor.grayColor().CGColor
-    
+    self.layer.borderColor = UIColor.lightGrayColor().CGColor
+    self.layer.cornerRadius = 10
+    self.clipsToBounds = true //clips anything that would go past rounded edges
     print("profile sizes \(self.frame.height) \(self.frame.width)")
     let contentFrame = CGRectMake(0 , 0 , self.frame.width, self.frame.height / 2)
     let content = UIView(frame: contentFrame)
@@ -42,11 +47,11 @@ class ContentProfileView: UIView {
 
     let titleFrame =   CGRectMake(0, yLocation, self.frame.width , titleHeight)
     let titleView = UIView(frame: titleFrame)
-    titleView.layer.borderWidth = 1
-    titleView.layer.borderColor = UIColor.grayColor().CGColor
+    //titleView.layer.borderWidth = 1
+    //titleView.layer.borderColor = UIColor.grayColor().CGColor
    
     //Username
-    let creatorFrame = CGRectMake(0, 0, self.frame.width / 2 , titleHeight)
+    let creatorFrame = CGRectMake(2, 0, self.frame.width / 2 , titleHeight)
     let contentCreator = UILabel(frame: creatorFrame)
     contentCreator.text = "Chf11002"
     titleView.addSubview(contentCreator)

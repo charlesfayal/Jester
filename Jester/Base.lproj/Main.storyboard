@@ -420,9 +420,9 @@
                                 <rect key="frame" x="-4" y="75" width="383" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLh-OJ-jh5">
-                                        <rect key="frame" x="5" y="0.0" width="180" height="50"/>
+                                        <rect key="frame" x="5" y="0.0" width="190" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="jyi-di-Ejh"/>
+                                            <constraint firstAttribute="width" constant="190" id="jyi-di-Ejh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                         <state key="normal" title="Categories">
@@ -433,7 +433,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrM-1o-BQ5">
-                                        <rect key="frame" x="185" y="0.0" width="193" height="50"/>
+                                        <rect key="frame" x="195" y="0.0" width="183" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                         <state key="normal" title="Post">
                                             <color key="titleColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>

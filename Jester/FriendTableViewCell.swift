@@ -1,47 +1,47 @@
 //
-//  CategoriesTableViewCell.swift
+//  FriendTableViewCell.swift
 //  Jester
 //
-//  Created by Charles Fayal on 6/30/16.
+//  Created by Charles Fayal on 7/5/16.
 //  Copyright © 2016 Charles Fayal. All rights reserved.
 //
 
 import UIKit
 
-class CategoriesTableViewCell: UITableViewCell {
-    @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var selectOutlet: UIButton!
+class FriendTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var friendsNameLabel: UILabel!
     
-    var categorySelected = false
+    
+    @IBOutlet weak var selectedBox: UIButton!
+    var friendSelected = false
     @IBAction func selectButton(sender: AnyObject) {
         //Change button image from selected to unselected and vice versa
-        if categorySelected {
-            categorySelected = false
+        if friendSelected {
+            friendSelected = false
             if let image = UIImage(named: "unselected box"){
-                selectOutlet.setImage(image, forState: .Normal)
+                selectedBox.setImage(image, forState: .Normal)
             } else {
                 print("didnt exist")
             }
         } else {
-            categorySelected = true
+            friendSelected = true
             if let image = UIImage(named: "selected box"){
-                selectOutlet.setImage(image, forState: .Normal)
+                selectedBox.setImage(image, forState: .Normal)
             } else {
                 print("didnt exist")
             }
         }
-    
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
         // Configure the view for the selected state
     }
-
 
 }

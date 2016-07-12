@@ -8,18 +8,51 @@
 
 import UIKit
 
-class LikedPostsViewController: UIViewController {
-
+class LikedPostsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBAction func followButton(sender: AnyObject) {
+    }
     @IBAction func returnButton(sender: AnyObject) {
-        self.performSegueWithIdentifier("unwindToMainScreen", sender: self)
+        performSegueWithIdentifier("unwindToMainScreen", sender: self)
+    }
+    
+    var collectionWidth:CGFloat = 100
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 30
+    }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("profileCell", forIndexPath: indexPath) as! PostCollectionViewCell
+        // Configure the cell
+        return cell
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = (collectionWidth - 6) / 3
+        return CGSizeMake(width, width)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       // tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        collectionWidth = collectionView.frame.width
+        print(collectionWidth)
+        
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        imageView.contentMode = .ScaleAspectFit
+        
+        if  let image = UIImage(named: "Liked")
+        {
+            imageView.image = image
+        } else { print("profile image didn't work") }
+        self.navigationItem.titleView = imageView
+        
+        //Replacing the profile title with an image
+        
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -7,8 +7,13 @@
 //
 
 import UIKit
-
+enum contentType {
+    case link
+    case picture
+    case nothing
+}
 class ContentProfileView: UIView {
+    var profileType: contentType = .nothing
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,6 +24,14 @@ class ContentProfileView: UIView {
         super.init(coder: aDecoder)
         nibSetup()
     }
+    init(frame: CGRect, type: contentType){
+        
+        profileType = type
+    super.init(frame:frame)
+        nibSetup()
+
+    }
+
    private func nibSetup() {
     //if we want to add shadow I need to make a shadow view
     //self.layer.shadowColor = UIColor.purpleColor().CGColor
@@ -28,27 +41,31 @@ class ContentProfileView: UIView {
     self.backgroundColor = UIColor.whiteColor()
     self.layer.borderWidth = 1
     self.layer.borderColor = UIColor.lightGrayColor().CGColor
-    self.layer.cornerRadius = 10
+    //self.layer.cornerRadius = 10
     self.clipsToBounds = true //clips anything that would go past rounded edges
     print("profile sizes \(self.frame.height) \(self.frame.width)")
-    let contentFrame = CGRectMake(0 , 0 , self.frame.width, self.frame.height / 2)
-    let content = UIView(frame: contentFrame)
+
+    var contentView = UIView()
     
+    switch profileType {
+    case contentType.picture:
+        print("picture profile")
+        contentView = picture()
+    case contentType.link:
+        print("link profile")
+        contentView = website()
+    default:
+        print("no profile type found")
+    }
+    self.addSubview(contentView)
+    yLocation += contentView.frame.height
     
-    let imageFrame = contentFrame
-    yLocation += contentFrame.height
-    let contentMedia = UIImageView(frame: imageFrame)
-    contentMedia.image = UIImage(named:"Default Image")
-    contentMedia.contentMode = UIViewContentMode.ScaleToFill
-    content.addSubview(contentMedia)
-    self.addSubview(content)
+  
     //titel frame
     let titleHeight: CGFloat = 30
 
     let titleFrame =   CGRectMake(0, yLocation, self.frame.width , titleHeight)
     let titleView = UIView(frame: titleFrame)
-    //titleView.layer.borderWidth = 1
-    //titleView.layer.borderColor = UIColor.grayColor().CGColor
    
     //Username
     let creatorFrame = CGRectMake(2, 0, self.frame.width / 2 , titleHeight)
@@ -87,4 +104,32 @@ class ContentProfileView: UIView {
 
     }
     
+    func picture() -> UIImageView{
+        let pictureFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height / 2)
+        let imageFrame = pictureFrame
+        let imageView = UIImageView(frame: imageFrame)
+        imageView.image = UIImage(named:"Default Image")
+        imageView.contentMode = UIViewContentMode.ScaleToFill
+        return imageView
+    }
+    
+    func website()-> UIWebView{
+        let webViewFrame = CGRectMake(0 , 0 , self.frame.width, self.frame.height)
+        let webView = UIWebView(frame: webViewFrame)
+        let url = NSURL(string: "http://stackoverflow.com/questions/24339145/how-do-i-write-a-custom-init-for-a-uiview-subclass-in-swift")! // converts to a url
+        
+        // webView.loadRequest(NSURLRequest(URL: url)) // shows the webpage, but you don't get the content, less capabiltities
+        
+        let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data , response , error) -> Void in
+            if let urlContent = data {
+                let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding) // decode website data
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    webView.loadHTMLString(String(webContent!), baseURL: nil)
+                })
+            } else { print("Error \(error)") }
+        }
+        task.resume()
+        return webView
+    }
 }

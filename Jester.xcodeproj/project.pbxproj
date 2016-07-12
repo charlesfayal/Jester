@@ -21,6 +21,8 @@
 		563271DB1D2C1D0400790830 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271DA1D2C1D0400790830 /* ShareViewController.swift */; };
 		563271DD1D2C1DF900790830 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271DC1D2C1DF900790830 /* FriendTableViewCell.swift */; };
 		563271DF1D2C1F0400790830 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271DE1D2C1F0400790830 /* AddCommentViewController.swift */; };
+		563271E31D2F773500790830 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271E21D2F773500790830 /* PostCollectionViewCell.swift */; };
+		563271E51D2F7B8200790830 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563271E41D2F7B8200790830 /* TestViewController.swift */; };
 		56357D9A1D0FBD3900AD10B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56357D991D0FBD3900AD10B7 /* AppDelegate.swift */; };
 		56357DA11D0FBD3900AD10B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56357D9F1D0FBD3900AD10B7 /* Main.storyboard */; };
 		56357DA31D0FBD3900AD10B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56357DA21D0FBD3900AD10B7 /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 		563271DA1D2C1D0400790830 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		563271DC1D2C1DF900790830 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		563271DE1D2C1F0400790830 /* AddCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
+		563271E21D2F773500790830 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		563271E41D2F7B8200790830 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		56357D961D0FBD3900AD10B7 /* Jester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56357D991D0FBD3900AD10B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56357DA01D0FBD3900AD10B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 				563271C41D24910900790830 /* CategoriesViewController.swift */,
 				563271D61D2C17F100790830 /* PostsTableViewCell.swift */,
 				563271D81D2C187600790830 /* ProfileViewController.swift */,
+				563271E41D2F7B8200790830 /* TestViewController.swift */,
+				563271E21D2F773500790830 /* PostCollectionViewCell.swift */,
 				563271D01D2591E100790830 /* CategoriesTableViewCell.swift */,
 				563271C61D2494A400790830 /* LikedPostsViewController.swift */,
 				563271CE1D25832200790830 /* ContentProfileView.swift */,
@@ -177,8 +183,10 @@
 			files = (
 				563271C31D2490ED00790830 /* CommentsViewController.swift in Sources */,
 				563271D11D2591E200790830 /* CategoriesTableViewCell.swift in Sources */,
+				563271E51D2F7B8200790830 /* TestViewController.swift in Sources */,
 				56357D9A1D0FBD3900AD10B7 /* AppDelegate.swift in Sources */,
 				563271BF1D2490A700790830 /* MainScreenViewController.swift in Sources */,
+				563271E31D2F773500790830 /* PostCollectionViewCell.swift in Sources */,
 				563271DB1D2C1D0400790830 /* ShareViewController.swift in Sources */,
 				563271C11D2490CB00790830 /* LogInViewController.swift in Sources */,
 				563271C71D2494A400790830 /* LikedPostsViewController.swift in Sources */,

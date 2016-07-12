@@ -8,33 +8,51 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var profilePicture: UIImageView!
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     @IBAction func returnButton(sender: AnyObject) {
         self.performSegueWithIdentifier("unwindToMainScreen", sender: self)
     }
     @IBAction func settingsButton(sender: AnyObject) {
     }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+    var collectionWidth:CGFloat = 100
+
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 30
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-          let cell:PostsTableViewCell = tableView.dequeueReusableCellWithIdentifier("profileCell") as! PostsTableViewCell
-        cell.imageView?.image = UIImage(named: "Default Image")
-        cell.textLabel!.text = "Test"
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    }
+    //3
+     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("profileCell", forIndexPath: indexPath) as! PostCollectionViewCell
+        // Configure the cell
         return cell
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let width = (collectionWidth - 6) / 3
+        print("cell width: \(width)")
+        return CGSizeMake(width, width)
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
-
-        // Do any additional setup after loading the view.
+        
+        collectionWidth = collectionView.frame.width
+        print(collectionWidth)
+     
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        imageView.contentMode = .ScaleAspectFit
+        
+        if  let image = UIImage(named: "Profile")
+        {
+            imageView.image = image
+        } else { print("profile image didn't work") }
+        self.navigationItem.titleView = imageView
+     
+         //Replacing the profile title with an image
+    
     }
 
     override func didReceiveMemoryWarning() {

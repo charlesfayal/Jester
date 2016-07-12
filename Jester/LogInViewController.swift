@@ -10,6 +10,9 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
+    @IBAction func facebookLogIn(sender: AnyObject) {
+        self.performSegueWithIdentifier("loggedIn", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

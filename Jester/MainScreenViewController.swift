@@ -88,14 +88,12 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         //buttonsView.layer.borderColor = UIColor.grayColor().CGColor
         
         
-        postButtonOutlet.layer.borderWidth = 1
-        postButtonOutlet.layer.borderColor = UIColor.lightGrayColor().CGColor
-        postButtonOutlet.layer.cornerRadius  = 5
+      
         
         let frame = categoriesOutlet.frame
         categoriesOutlet.frame = CGRectMake(frame.minX,frame.minY,self.view.frame.width / 2, frame.height)
         categoriesOutlet.layer.borderWidth = 1
-        categoriesOutlet.layer.cornerRadius = 5
+        //categoriesOutlet.layer.cornerRadius = 5
         
         categoriesOutlet.layer.borderColor = UIColor.lightGrayColor().CGColor
         
@@ -106,7 +104,9 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasDragged(_:)))
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasTapped(_:)))
         //Add a profile
-        let profile = ContentProfileView(frame: profileView.frame)
+        print("here")
+        let profile = ContentProfileView(frame: profileView.frame, type: .link)
+        print("here too")
         profile.addGestureRecognizer(swipeGesture)
         profile.addGestureRecognizer(tapGesture)
         self.view.addSubview(profile)

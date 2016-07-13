@@ -68,7 +68,7 @@
 		56357D8D1D0FBD3900AD10B7 = {
 			isa = PBXGroup;
 			children = (
-				56357D981D0FBD3900AD10B7 /* Jester */,
+				56357D981D0FBD3900AD10B7 /* Swirl */,
 				56357D971D0FBD3900AD10B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,12 +81,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		56357D981D0FBD3900AD10B7 /* Jester */ = {
+		56357D981D0FBD3900AD10B7 /* Swirl */ = {
 			isa = PBXGroup;
 			children = (
 				56357D991D0FBD3900AD10B7 /* AppDelegate.swift */,
 				563271C01D2490CB00790830 /* LogInViewController.swift */,
 				563271BE1D2490A700790830 /* MainScreenViewController.swift */,
+				563271CE1D25832200790830 /* ContentProfileView.swift */,
 				563271C21D2490ED00790830 /* CommentsViewController.swift */,
 				563271D41D25CB8700790830 /* CommentsTableViewCell.swift */,
 				563271C41D24910900790830 /* CategoriesViewController.swift */,
@@ -96,7 +97,6 @@
 				563271E21D2F773500790830 /* PostCollectionViewCell.swift */,
 				563271D01D2591E100790830 /* CategoriesTableViewCell.swift */,
 				563271C61D2494A400790830 /* LikedPostsViewController.swift */,
-				563271CE1D25832200790830 /* ContentProfileView.swift */,
 				563271DA1D2C1D0400790830 /* ShareViewController.swift */,
 				563271DC1D2C1DF900790830 /* FriendTableViewCell.swift */,
 				563271D21D25C8E400790830 /* PostInfoViewController.swift */,
@@ -106,6 +106,7 @@
 				56357DA41D0FBD3900AD10B7 /* LaunchScreen.storyboard */,
 				56357DA71D0FBD3900AD10B7 /* Info.plist */,
 			);
+			name = Swirl;
 			path = Jester;
 			sourceTree = "<group>";
 		};
@@ -317,7 +318,7 @@
 				INFOPLIST_FILE = Jester/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Charles.Jester;
+				PRODUCT_BUNDLE_IDENTIFIER = Charles.Swirl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -332,7 +333,7 @@
 				INFOPLIST_FILE = Jester/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Charles.Jester;
+				PRODUCT_BUNDLE_IDENTIFIER = Charles.Swirl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

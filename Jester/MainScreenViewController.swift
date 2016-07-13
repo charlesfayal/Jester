@@ -54,10 +54,11 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     {
         let translation = gesture.translationInView(self.view)
         let view = gesture.view!
-        view.center = CGPoint(x: self.view.bounds.width/2 + translation.x, y: self.view.bounds.height/2 + translation.y) // relative to bottom left of screen
+        view.center = CGPoint(x: profileView.center.x + translation.x, y: self.profileView.center.y + translation.y) // relative to bottom left of screen
+        
         let xFromCenter = view.center.x - self.view.bounds.width/2
         let scale = 100 / (abs(xFromCenter) + 100 )
-        var rotation = CGAffineTransformMakeRotation(xFromCenter / (self.view.bounds.width/2))
+        var rotation = CGAffineTransformMakeRotation(0)
         var stretch = CGAffineTransformScale(rotation, scale, scale)
         view.transform = stretch
         if gesture.state == UIGestureRecognizerState.Ended {
@@ -104,9 +105,7 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasDragged(_:)))
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasTapped(_:)))
         //Add a profile
-        print("here")
-        let profile = ContentProfileView(frame: profileView.frame, type: .link)
-        print("here too")
+        let profile = ContentProfileView(frame: profileView.frame, type: .picture)
         profile.addGestureRecognizer(swipeGesture)
         profile.addGestureRecognizer(tapGesture)
         self.view.addSubview(profile)

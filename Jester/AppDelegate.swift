@@ -7,13 +7,12 @@
 //
 
 import UIKit
-let themeColor = UIColor(colorLiteralRed: 75, green: 13, blue: 106, alpha: 1)
+let themeColor = UIColor(colorLiteralRed: 51/255, green: 102/255, blue: 153/255, alpha: 1)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
     
-   // let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

@@ -18,11 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login Background" translatesAutoresizingMaskIntoConstraints="NO" id="ZJQ-CD-pG5">
-                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xH-08-FiA">
-                                <rect key="frame" x="61" y="304" width="252" height="60"/>
+                                <rect key="frame" x="62" y="474" width="252" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8IL-kT-DUr"/>
                                     <constraint firstAttribute="width" constant="252" id="yrY-MU-Rs9"/>
@@ -33,25 +30,21 @@
                                     <action selector="facebookLogIn:" destination="Z0x-gl-5bt" eventType="touchUpInside" id="NmT-So-amE"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jester Bolded" translatesAutoresizingMaskIntoConstraints="NO" id="Q02-2o-aQ5">
-                                <rect key="frame" x="131" y="204" width="114" height="40"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swirlLogoThin" translatesAutoresizingMaskIntoConstraints="NO" id="ymA-eU-p4L">
+                                <rect key="frame" x="77" y="248" width="222" height="172"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jester Logo bigger?" translatesAutoresizingMaskIntoConstraints="NO" id="vJY-E2-i1e">
-                                <rect key="frame" x="125" y="103" width="125" height="98"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swirlText" translatesAutoresizingMaskIntoConstraints="NO" id="96a-rw-yD2">
+                                <rect key="frame" x="103" y="160" width="169" height="68"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZJQ-CD-pG5" firstAttribute="top" secondItem="MUi-Xg-bGr" secondAttribute="topMargin" id="DXw-61-U0M"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZJQ-CD-pG5" secondAttribute="trailing" constant="-20" id="Ffj-Ck-2uF"/>
-                            <constraint firstItem="5xH-08-FiA" firstAttribute="top" secondItem="Q02-2o-aQ5" secondAttribute="bottom" constant="60" id="JVm-nZ-1kA"/>
-                            <constraint firstItem="ZJQ-CD-pG5" firstAttribute="leading" secondItem="MUi-Xg-bGr" secondAttribute="leadingMargin" constant="-20" id="Rjr-OE-Gvn"/>
+                            <constraint firstItem="ymA-eU-p4L" firstAttribute="centerY" secondItem="MUi-Xg-bGr" secondAttribute="centerY" id="CH9-n0-MQf"/>
+                            <constraint firstItem="96a-rw-yD2" firstAttribute="centerX" secondItem="MUi-Xg-bGr" secondAttribute="centerX" id="IwG-zS-gIq"/>
                             <constraint firstItem="5xH-08-FiA" firstAttribute="centerX" secondItem="MUi-Xg-bGr" secondAttribute="centerX" id="ZPb-1V-j77"/>
-                            <constraint firstItem="vJY-E2-i1e" firstAttribute="centerX" secondItem="MUi-Xg-bGr" secondAttribute="centerX" id="cvA-4V-1zV"/>
-                            <constraint firstItem="5xH-08-FiA" firstAttribute="centerY" secondItem="MUi-Xg-bGr" secondAttribute="centerY" id="iaV-c7-KhS"/>
-                            <constraint firstItem="88z-CB-Xbg" firstAttribute="top" secondItem="ZJQ-CD-pG5" secondAttribute="bottom" id="qJd-JH-osq"/>
-                            <constraint firstItem="Q02-2o-aQ5" firstAttribute="top" secondItem="vJY-E2-i1e" secondAttribute="bottom" constant="3" id="uZT-ob-KWt"/>
-                            <constraint firstItem="Q02-2o-aQ5" firstAttribute="centerX" secondItem="MUi-Xg-bGr" secondAttribute="centerX" id="zhx-6V-pZi"/>
+                            <constraint firstItem="ymA-eU-p4L" firstAttribute="centerX" secondItem="MUi-Xg-bGr" secondAttribute="centerX" id="ap3-aZ-vfU"/>
+                            <constraint firstItem="5xH-08-FiA" firstAttribute="centerY" secondItem="MUi-Xg-bGr" secondAttribute="centerY" constant="170" id="iaV-c7-KhS"/>
+                            <constraint firstItem="ymA-eU-p4L" firstAttribute="top" secondItem="96a-rw-yD2" secondAttribute="bottom" constant="20" id="xjc-Vh-lBn"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -81,12 +74,12 @@
                                     <constraint firstAttribute="height" constant="44" id="E06-vt-l54"/>
                                 </constraints>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Categories" id="BEa-nT-UH3">
                                         <barButtonItem key="leftBarButtonItem" image="Back Arrow" id="bcv-X4-wbq">
-                                            <color key="tintColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="returnButton:" destination="dyA-xZ-Ehn" id="YlI-fJ-udg"/>
                                             </connections>
@@ -128,7 +121,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciQ-IR-eca">
                                                     <rect key="frame" x="8" y="11" width="310" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -192,12 +185,12 @@
                                     <constraint firstAttribute="height" constant="60" id="qJ2-ap-mED"/>
                                 </constraints>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Post" id="pOn-WJ-pv6">
                                         <barButtonItem key="leftBarButtonItem" image="Back Arrow" id="UxI-zU-TIN">
-                                            <color key="tintColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="returnButton:" destination="5s4-eo-ZcR" id="p7O-6t-hfI"/>
                                             </connections>
@@ -238,7 +231,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3B-cd-hBg">
-                                        <rect key="frame" x="212" y="18" width="53" height="53"/>
+                                        <rect key="frame" x="227" y="33" width="23" height="23"/>
                                         <state key="normal" image="commentButton"/>
                                         <connections>
                                             <action selector="commentButton:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="ltU-Ij-IAn"/>
@@ -325,52 +318,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUa-nL-WMS">
-                                <rect key="frame" x="-4" y="577" width="383" height="90"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIy-Bh-fTa">
-                                        <rect key="frame" x="30" y="18" width="53" height="53"/>
-                                        <state key="normal" image="tomatoButton"/>
-                                        <connections>
-                                            <action selector="dislikeButton:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="WA2-Df-yT8"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGL-r5-7kN">
-                                        <rect key="frame" x="120" y="18" width="53" height="53"/>
-                                        <state key="normal" image="likeButton"/>
-                                        <connections>
-                                            <action selector="likeButon:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="izs-yE-p5M"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOL-zP-y8Y">
-                                        <rect key="frame" x="210" y="18" width="53" height="53"/>
-                                        <state key="normal" image="commentButton"/>
-                                        <connections>
-                                            <action selector="commentButton:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="peB-Sq-vgK"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-q0-kf7">
-                                        <rect key="frame" x="300" y="18" width="53" height="53"/>
-                                        <state key="normal" image="sendButton"/>
-                                        <connections>
-                                            <action selector="shareButton:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="Zzv-UV-KLn"/>
-                                            <segue destination="KW3-aZ-fqV" kind="show" id="qtt-Bw-f4j"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="vIy-Bh-fTa" firstAttribute="centerY" secondItem="LUa-nL-WMS" secondAttribute="centerY" id="2Iu-H0-CHk"/>
-                                    <constraint firstItem="vIy-Bh-fTa" firstAttribute="centerX" secondItem="LUa-nL-WMS" secondAttribute="centerX" constant="-135" id="34G-4m-2cA"/>
-                                    <constraint firstItem="gOL-zP-y8Y" firstAttribute="centerX" secondItem="LUa-nL-WMS" secondAttribute="centerX" constant="45" id="6td-u6-HuQ"/>
-                                    <constraint firstItem="gOL-zP-y8Y" firstAttribute="centerY" secondItem="LUa-nL-WMS" secondAttribute="centerY" id="KpB-I9-BFw"/>
-                                    <constraint firstAttribute="height" constant="90" id="Ova-e0-w7w"/>
-                                    <constraint firstItem="kGL-r5-7kN" firstAttribute="centerX" secondItem="LUa-nL-WMS" secondAttribute="centerX" constant="-45" id="R6e-F2-zFt"/>
-                                    <constraint firstItem="qAc-q0-kf7" firstAttribute="centerX" secondItem="LUa-nL-WMS" secondAttribute="centerX" constant="135" id="WpI-4w-iKP"/>
-                                    <constraint firstItem="kGL-r5-7kN" firstAttribute="centerY" secondItem="LUa-nL-WMS" secondAttribute="centerY" id="bnZ-oP-r7W"/>
-                                    <constraint firstItem="qAc-q0-kf7" firstAttribute="centerY" secondItem="LUa-nL-WMS" secondAttribute="centerY" id="ola-78-aRQ"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F6C-LZ-FeE">
                                 <rect key="frame" x="-4" y="75" width="383" height="50"/>
                                 <subviews>
@@ -381,7 +328,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                         <state key="normal" title="Categories">
-                                            <color key="titleColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.15686274509803921" green="0.32156862745098042" blue="0.52549019607843139" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -405,28 +352,28 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixl-YW-bFT">
                                 <rect key="frame" x="-4" y="0.0" width="387" height="75"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhx-Jw-cBW">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhx-Jw-cBW">
                                         <rect key="frame" x="40" y="27" width="22" height="32"/>
-                                        <state key="normal" image="Profile"/>
+                                        <state key="normal" image="profileButton"/>
                                         <connections>
                                             <segue destination="eD4-Od-LcY" kind="show" id="gOf-wB-zkV"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LA0-b5-5VI">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LA0-b5-5VI">
                                         <rect key="frame" x="315" y="27" width="32" height="32"/>
-                                        <state key="normal" image="Liked"/>
+                                        <state key="normal" image="likesButton"/>
                                         <connections>
                                             <segue destination="sRn-Dh-2gK" kind="show" id="kmI-fe-m8N"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou9-z3-gGm">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou9-z3-gGm">
                                         <rect key="frame" x="177" y="27" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="D7S-Td-KtX"/>
                                             <constraint firstAttribute="height" constant="32" id="slk-lR-3Xj"/>
                                         </constraints>
                                         <color key="tintColor" red="0.79779647440000001" green="0.79779647440000001" blue="0.79779647440000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Button" image="camera">
+                                        <state key="normal" title="Button" image="uploadButton">
                                             <color key="titleShadowColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -446,7 +393,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2K-qj-3Tk">
-                                <rect key="frame" x="1" y="126" width="373" height="451"/>
+                                <rect key="frame" x="1" y="126" width="373" height="541"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -454,27 +401,22 @@
                         <constraints>
                             <constraint firstItem="C2K-qj-3Tk" firstAttribute="top" secondItem="F6C-LZ-FeE" secondAttribute="bottom" id="Aan-EI-XTy"/>
                             <constraint firstItem="Ixl-YW-bFT" firstAttribute="top" secondItem="H3Q-VO-TLS" secondAttribute="topMargin" id="Brc-r3-N4o"/>
-                            <constraint firstItem="LUa-nL-WMS" firstAttribute="top" secondItem="C2K-qj-3Tk" secondAttribute="bottom" id="N0a-qH-IIV"/>
+                            <constraint firstItem="Ly8-sD-dvb" firstAttribute="top" secondItem="C2K-qj-3Tk" secondAttribute="bottom" id="Ldo-ie-5Lw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="C2K-qj-3Tk" secondAttribute="trailing" constant="-15" id="NcN-05-KT0"/>
                             <constraint firstItem="Ly8-sD-dvb" firstAttribute="top" secondItem="C2K-qj-3Tk" secondAttribute="bottom" constant="89" id="S6z-bD-oBU"/>
-                            <constraint firstItem="Ly8-sD-dvb" firstAttribute="top" secondItem="LUa-nL-WMS" secondAttribute="bottom" id="VxH-Ne-TV5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ixl-YW-bFT" secondAttribute="trailing" constant="-24" id="Ylt-Oh-4NK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="F6C-LZ-FeE" secondAttribute="trailing" constant="-20" id="Z1M-XL-TM6"/>
-                            <constraint firstItem="LUa-nL-WMS" firstAttribute="top" secondItem="C2K-qj-3Tk" secondAttribute="bottom" constant="3" id="dxL-Dt-eDn"/>
-                            <constraint firstItem="LUa-nL-WMS" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-20" id="hZj-Wf-ISy"/>
                             <constraint firstItem="C2K-qj-3Tk" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-15" id="jp2-am-4YA"/>
                             <constraint firstItem="F6C-LZ-FeE" firstAttribute="top" secondItem="Ixl-YW-bFT" secondAttribute="bottom" id="kJD-Tj-Bzg"/>
                             <constraint firstItem="C2K-qj-3Tk" firstAttribute="top" secondItem="F6C-LZ-FeE" secondAttribute="bottom" id="kn1-Rm-x9P"/>
                             <constraint firstItem="Ixl-YW-bFT" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-20" id="lwM-rj-bcc"/>
                             <constraint firstItem="F6C-LZ-FeE" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-20" id="pE4-d3-WGF"/>
                             <constraint firstItem="C2K-qj-3Tk" firstAttribute="top" secondItem="F6C-LZ-FeE" secondAttribute="bottom" constant="1" id="sRw-WY-5v4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LUa-nL-WMS" secondAttribute="trailing" constant="-20" id="tK1-EG-Ze5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Aan-EI-XTy"/>
                                 <exclude reference="kn1-Rm-x9P"/>
-                                <exclude reference="dxL-Dt-eDn"/>
                                 <exclude reference="S6z-bD-oBU"/>
                             </mask>
                         </variation>
@@ -482,7 +424,6 @@
                     <navigationItem key="navigationItem" id="zES-ps-leS"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="buttonsView" destination="LUa-nL-WMS" id="a9A-Jo-pA7"/>
                         <outlet property="categoriesOutlet" destination="SLh-OJ-jh5" id="kvF-Nv-DZ6"/>
                         <outlet property="postButtonOutlet" destination="Ou9-z3-gGm" id="Z0E-5q-Cqa"/>
                         <outlet property="profileView" destination="C2K-qj-3Tk" id="1bC-AN-QSV"/>
@@ -513,12 +454,12 @@
                                     <constraint firstAttribute="height" constant="60" id="TdD-Th-k8m"/>
                                 </constraints>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Comments" id="Trs-5e-2A2">
                                         <barButtonItem key="leftBarButtonItem" image="Back Arrow" id="TRu-28-ICy">
-                                            <color key="tintColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="returnButton:" destination="xCR-nl-ppz" id="sUi-kr-Cqz"/>
                                             </connections>
@@ -626,7 +567,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SHE-o0-zCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Uid-eU-7IH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="410.5" y="-108.5"/>
+            <point key="canvasLocation" x="410.5" y="-98.5"/>
         </scene>
         <!--Post Screen-->
         <scene sceneID="ADU-C2-rAl">
@@ -737,7 +678,7 @@
                                         <rect key="frame" x="163" y="10" width="57" height="40"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                         <state key="normal" title="Post!">
-                                            <color key="titleColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="postButton:" destination="Pxh-qJ-MmX" eventType="touchUpInside" id="NdB-6y-TU8"/>
@@ -757,12 +698,12 @@
                                     <constraint firstAttribute="height" constant="60" id="jW3-yg-tno"/>
                                 </constraints>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Add a comment" id="vbj-ku-j85">
                                         <barButtonItem key="leftBarButtonItem" image="Back Arrow" id="x29-Kb-DPZ">
-                                            <color key="tintColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="returnButton:" destination="Pxh-qJ-MmX" id="W5z-Hu-wu3"/>
                                             </connections>
@@ -821,18 +762,18 @@
                                     <constraint firstAttribute="height" constant="60" id="akg-Gd-CSw"/>
                                 </constraints>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Share With..." id="58u-Dp-018">
                                         <barButtonItem key="leftBarButtonItem" image="Back Arrow" id="ojT-r6-j8i">
-                                            <color key="tintColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="returnButton:" destination="KW3-aZ-fqV" id="nmJ-qN-IdB"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="TIK-fE-dlq">
-                                            <color key="tintColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="addFriendButton:" destination="KW3-aZ-fqV" id="iST-mo-VO3"/>
                                             </connections>
@@ -968,14 +909,14 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CharlesHaf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQW-xt-ppb">
-                                        <rect key="frame" x="14" y="19" width="126" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CharlesHaf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQW-xt-ppb">
+                                        <rect key="frame" x="18" y="19" width="126" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="126" id="fFL-BH-Uum"/>
                                             <constraint firstAttribute="height" constant="21" id="kzn-Hq-MDo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1059,13 +1000,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="8uh-Wn-NJY">
                         <barButtonItem key="leftBarButtonItem" image="Back Arrow" id="N4X-7q-OG2">
-                            <color key="tintColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="returnButton:" destination="AWW-pN-PA1" id="Msu-wg-1jY"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Cog Settings" id="uu9-Sc-FIq">
-                            <color key="tintColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="settingsButton:" destination="AWW-pN-PA1" id="cs0-gs-9BL"/>
                             </connections>
@@ -1073,9 +1014,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="IBn-fl-ch0" id="48v-Pi-x3a"/>
+                        <segue destination="rCo-o5-VXl" kind="unwind" identifier="unwindToMainScreen" unwindAction="unwindToMainScreen:" id="Vyv-s6-Ssp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qY0-xf-BMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rCo-o5-VXl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="549.5" y="-2324.5"/>
         </scene>
@@ -1177,13 +1120,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Liked Post" id="jPK-W6-uuw">
                         <barButtonItem key="leftBarButtonItem" image="Back Arrow" id="c2X-on-JYa">
-                            <color key="tintColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="returnButton:" destination="gys-E4-hCG" id="CLC-VX-0B0"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Follow" id="Chn-gd-Ng3">
-                            <color key="tintColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="followButton:" destination="gys-E4-hCG" id="AJr-ai-e1n"/>
                             </connections>
@@ -1224,20 +1167,20 @@
         <image name="Cog Settings" width="30" height="30"/>
         <image name="Default Image" width="1024" height="681"/>
         <image name="Facebook Login" width="378" height="69"/>
-        <image name="Jester Bolded" width="114" height="40"/>
-        <image name="Jester Logo bigger?" width="125" height="98"/>
-        <image name="Liked" width="32" height="32"/>
-        <image name="Login Background" width="375" height="667"/>
         <image name="Movie " width="141" height="116"/>
-        <image name="Profile" width="22" height="32"/>
         <image name="View Icon" width="112" height="79"/>
         <image name="camera" width="122" height="116"/>
-        <image name="commentButton" width="53" height="53"/>
+        <image name="commentButton" width="23" height="23"/>
         <image name="likeButton" width="53" height="53"/>
+        <image name="likesButton" width="35" height="34"/>
         <image name="likesImage" width="32" height="30"/>
+        <image name="profileButton" width="25" height="34"/>
         <image name="selected box" width="79" height="77"/>
         <image name="sendButton" width="53" height="53"/>
+        <image name="swirlLogoThin" width="222" height="172"/>
+        <image name="swirlText" width="169" height="68"/>
         <image name="tomatoButton" width="53" height="53"/>
         <image name="unselected box" width="79" height="76"/>
+        <image name="uploadButton" width="34" height="34"/>
     </resources>
 </document>

@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swirlText" translatesAutoresizingMaskIntoConstraints="NO" id="sMf-Fv-5K5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="swirlText" translatesAutoresizingMaskIntoConstraints="NO" id="sMf-Fv-5K5">
                                 <rect key="frame" x="103" y="160" width="169" height="68"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swirlLogoThin" translatesAutoresizingMaskIntoConstraints="NO" id="MDi-1s-rRS">

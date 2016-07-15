@@ -210,60 +210,9 @@
                                     <constraint firstAttribute="height" constant="21" id="ZwZ-3H-HIl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRS-PI-rdc">
-                                <rect key="frame" x="-8" y="577" width="387" height="90"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pu3-2T-yXQ">
-                                        <rect key="frame" x="32" y="18" width="53" height="53"/>
-                                        <state key="normal" image="tomatoButton"/>
-                                        <connections>
-                                            <action selector="dislikeButton:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="0FQ-2b-huz"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eh0-FU-EoW">
-                                        <rect key="frame" x="122" y="18" width="53" height="53"/>
-                                        <state key="normal" image="likeButton"/>
-                                        <connections>
-                                            <action selector="likeButon:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="tMs-6i-dcT"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3B-cd-hBg">
-                                        <rect key="frame" x="227" y="33" width="23" height="23"/>
-                                        <state key="normal" image="commentButton"/>
-                                        <connections>
-                                            <action selector="commentButton:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="ltU-Ij-IAn"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0P-Ro-2o9">
-                                        <rect key="frame" x="302" y="18" width="53" height="53"/>
-                                        <state key="normal" image="sendButton"/>
-                                        <connections>
-                                            <action selector="shareButton:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="Wit-C9-ptG"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="w3B-cd-hBg" firstAttribute="centerY" secondItem="gRS-PI-rdc" secondAttribute="centerY" id="JOS-BW-auX"/>
-                                    <constraint firstItem="Pu3-2T-yXQ" firstAttribute="centerY" secondItem="gRS-PI-rdc" secondAttribute="centerY" id="OkD-Oe-cEy"/>
-                                    <constraint firstItem="Pu3-2T-yXQ" firstAttribute="centerX" secondItem="gRS-PI-rdc" secondAttribute="centerX" constant="-135" id="S5q-d4-DAx"/>
-                                    <constraint firstAttribute="height" constant="90" id="SX3-Kk-P77"/>
-                                    <constraint firstItem="g0P-Ro-2o9" firstAttribute="centerX" secondItem="gRS-PI-rdc" secondAttribute="centerX" constant="135" id="Sgx-W5-g8A"/>
-                                    <constraint firstItem="g0P-Ro-2o9" firstAttribute="centerY" secondItem="gRS-PI-rdc" secondAttribute="centerY" id="UIQ-Gf-gHR"/>
-                                    <constraint firstItem="Eh0-FU-EoW" firstAttribute="centerX" secondItem="gRS-PI-rdc" secondAttribute="centerX" constant="-45" id="bbd-OD-DOR"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="gGo-Uy-LUp"/>
-                                    <constraint firstItem="w3B-cd-hBg" firstAttribute="centerX" secondItem="gRS-PI-rdc" secondAttribute="centerX" constant="45" id="ggI-c6-O0s"/>
-                                    <constraint firstItem="Eh0-FU-EoW" firstAttribute="centerY" secondItem="gRS-PI-rdc" secondAttribute="centerY" id="kOu-Tr-aEQ"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K8B-nk-3lW">
                                 <rect key="frame" x="-4" y="387" width="383" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -274,6 +223,60 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRS-PI-rdc">
+                                <rect key="frame" x="-8" y="577" width="387" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3B-cd-hBg">
+                                        <rect key="frame" x="171" y="22" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="cNN-eG-btT"/>
+                                            <constraint firstAttribute="height" constant="45" id="dru-zr-UKb"/>
+                                        </constraints>
+                                        <state key="normal" image="commentButton"/>
+                                        <connections>
+                                            <action selector="commentButton:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="ltU-Ij-IAn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0P-Ro-2o9">
+                                        <rect key="frame" x="291" y="23" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="1vH-CU-HXf"/>
+                                            <constraint firstAttribute="height" constant="45" id="svj-GX-TJv"/>
+                                        </constraints>
+                                        <state key="normal" image="unlikedStar"/>
+                                        <connections>
+                                            <action selector="shareButton:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="Wit-C9-ptG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eh0-FU-EoW">
+                                        <rect key="frame" x="51" y="22" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="5Av-8m-cWd"/>
+                                            <constraint firstAttribute="height" constant="45" id="6z0-P3-HXB"/>
+                                        </constraints>
+                                        <state key="normal" image="shareButton"/>
+                                        <connections>
+                                            <action selector="likeButon:" destination="Pyc-VD-e6n" eventType="touchUpInside" id="tMs-6i-dcT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="w3B-cd-hBg" firstAttribute="centerY" secondItem="gRS-PI-rdc" secondAttribute="centerY" id="JOS-BW-auX"/>
+                                    <constraint firstAttribute="height" constant="90" id="SX3-Kk-P77"/>
+                                    <constraint firstItem="g0P-Ro-2o9" firstAttribute="centerX" secondItem="gRS-PI-rdc" secondAttribute="centerX" constant="120" id="Sgx-W5-g8A"/>
+                                    <constraint firstItem="g0P-Ro-2o9" firstAttribute="centerY" secondItem="gRS-PI-rdc" secondAttribute="centerY" id="UIQ-Gf-gHR"/>
+                                    <constraint firstItem="Eh0-FU-EoW" firstAttribute="centerX" secondItem="gRS-PI-rdc" secondAttribute="centerX" constant="-120" id="bbd-OD-DOR"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="gGo-Uy-LUp"/>
+                                    <constraint firstItem="w3B-cd-hBg" firstAttribute="centerX" secondItem="gRS-PI-rdc" secondAttribute="centerX" id="ggI-c6-O0s"/>
+                                    <constraint firstItem="Eh0-FU-EoW" firstAttribute="centerY" secondItem="gRS-PI-rdc" secondAttribute="centerY" id="kOu-Tr-aEQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -304,7 +307,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gsu-3C-6D9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="bMj-Zg-SMU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1366.5" y="-40.5"/>
+            <point key="canvasLocation" x="1266.5" y="41.5"/>
         </scene>
         <!--Swipe Screen-->
         <scene sceneID="lnl-ld-9zO">
@@ -363,7 +366,7 @@
                                         <rect key="frame" x="315" y="27" width="32" height="32"/>
                                         <state key="normal" image="likesButton"/>
                                         <connections>
-                                            <segue destination="sRn-Dh-2gK" kind="show" id="kmI-fe-m8N"/>
+                                            <segue destination="sRn-Dh-2gK" kind="show" id="bZX-GH-Tgz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou9-z3-gGm">
@@ -377,7 +380,7 @@
                                             <color key="titleShadowColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Pxh-qJ-MmX" kind="show" id="3f0-m0-wt2"/>
+                                            <segue destination="GDP-Gi-QIB" kind="show" id="qEu-Cc-RQw"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -434,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVB-qX-2wC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="410.5" y="-1125.5"/>
+            <point key="canvasLocation" x="416.5" y="-1131.5"/>
         </scene>
         <!--Comments-->
         <scene sceneID="g3y-js-jxJ">
@@ -583,16 +586,13 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Lx-nz-fuw">
                                 <rect key="frame" x="-4" y="65" width="383" height="253"/>
-                                <color key="backgroundColor" red="0.79779647440000001" green="0.79779647440000001" blue="0.79779647440000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="253" id="SLd-ei-qgC"/>
                                 </constraints>
-                                <state key="normal" image="camera"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afg-Uh-ufS">
-                                <rect key="frame" x="-4" y="321" width="383" height="346"/>
-                                <color key="backgroundColor" red="0.79779647440000001" green="0.79779647440000001" blue="0.79779647440000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="Movie "/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <state key="normal" title=" Link" image="Link">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="er9-EU-Rtj">
                                 <rect key="frame" x="-4" y="0.0" width="383" height="60"/>
@@ -600,18 +600,33 @@
                                     <constraint firstAttribute="height" constant="60" id="UTd-Uc-aRh"/>
                                 </constraints>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Post" id="a9j-EH-r8F"/>
+                                    <navigationItem title="Post a.." id="a9j-EH-r8F"/>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afg-Uh-ufS">
+                                <rect key="frame" x="-4" y="326" width="383" height="346"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <state key="normal" title=" Image" image="imageButton">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Pxh-qJ-MmX" kind="show" id="vBn-7U-66K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="er9-EU-Rtj" firstAttribute="top" secondItem="eIo-0h-jin" secondAttribute="topMargin" id="6Nf-ke-od1"/>
                             <constraint firstItem="Je7-Gn-wxr" firstAttribute="top" secondItem="afg-Uh-ufS" secondAttribute="bottom" id="Elr-Tf-NsZ"/>
-                            <constraint firstItem="afg-Uh-ufS" firstAttribute="top" secondItem="1Lx-nz-fuw" secondAttribute="bottom" constant="3" id="GUI-cF-Z4g"/>
+                            <constraint firstItem="afg-Uh-ufS" firstAttribute="top" secondItem="1Lx-nz-fuw" secondAttribute="bottom" id="GUI-cF-Z4g"/>
                             <constraint firstItem="afg-Uh-ufS" firstAttribute="top" secondItem="1Lx-nz-fuw" secondAttribute="bottom" constant="3" id="JnJ-Ao-L5t"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1Lx-nz-fuw" secondAttribute="trailing" constant="-20" id="QIq-jL-KlE"/>
                             <constraint firstItem="1Lx-nz-fuw" firstAttribute="leading" secondItem="eIo-0h-jin" secondAttribute="leadingMargin" constant="-20" id="QUd-vK-oUn"/>
@@ -621,13 +636,18 @@
                             <constraint firstAttribute="trailingMargin" secondItem="afg-Uh-ufS" secondAttribute="trailing" constant="-20" id="jWA-8V-ubP"/>
                             <constraint firstItem="er9-EU-Rtj" firstAttribute="leading" secondItem="eIo-0h-jin" secondAttribute="leadingMargin" constant="-20" id="zb4-Fy-Vs1"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JnJ-Ao-L5t"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="recents" id="ZRb-4w-9NF"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H3f-pV-cdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4379.5" y="-1307.5"/>
+            <point key="canvasLocation" x="1564.5" y="-649.5"/>
         </scene>
         <!--Add Comment View Controller-->
         <scene sceneID="lLU-e7-kgn">
@@ -742,7 +762,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0DG-xL-YnH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Qn9-vu-TRD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1140.5" y="-2303.5"/>
+            <point key="canvasLocation" x="2010.5" y="-250.5"/>
         </scene>
         <!--Share With-->
         <scene sceneID="v1A-cz-FnX">
@@ -1125,12 +1145,6 @@
                                 <action selector="returnButton:" destination="gys-E4-hCG" id="CLC-VX-0B0"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Follow" id="Chn-gd-Ng3">
-                            <color key="tintColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="followButton:" destination="gys-E4-hCG" id="AJr-ai-e1n"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="38Q-Bx-XBW" id="xF2-il-GD2"/>
@@ -1140,7 +1154,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="If3-9p-9vx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="089-8U-WCH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1618.5" y="-1367.5"/>
+            <point key="canvasLocation" x="1564.5" y="-1512.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bjW-OY-HJZ">
@@ -1159,7 +1173,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oaQ-rs-myO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1159.5" y="-1358.5"/>
+            <point key="canvasLocation" x="1041.5" y="-1512.5"/>
         </scene>
     </scenes>
     <resources>
@@ -1167,19 +1181,18 @@
         <image name="Cog Settings" width="30" height="30"/>
         <image name="Default Image" width="1024" height="681"/>
         <image name="Facebook Login" width="378" height="69"/>
-        <image name="Movie " width="141" height="116"/>
+        <image name="Link" width="80" height="80"/>
         <image name="View Icon" width="112" height="79"/>
-        <image name="camera" width="122" height="116"/>
         <image name="commentButton" width="23" height="23"/>
-        <image name="likeButton" width="53" height="53"/>
+        <image name="imageButton" width="80" height="80"/>
         <image name="likesButton" width="35" height="34"/>
         <image name="likesImage" width="32" height="30"/>
         <image name="profileButton" width="25" height="34"/>
         <image name="selected box" width="79" height="77"/>
-        <image name="sendButton" width="53" height="53"/>
+        <image name="shareButton" width="23" height="23"/>
         <image name="swirlLogoThin" width="222" height="172"/>
         <image name="swirlText" width="169" height="68"/>
-        <image name="tomatoButton" width="53" height="53"/>
+        <image name="unlikedStar" width="29" height="30"/>
         <image name="unselected box" width="79" height="76"/>
         <image name="uploadButton" width="34" height="34"/>
     </resources>

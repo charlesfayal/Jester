@@ -68,8 +68,9 @@ class ContentProfileView: UIView {
     if profileType == .picture {
         let messageFrame = CGRectMake(0, yLocation, self.frame.width, self.frame.height - yLocation - titleHeight)
         let contentMessage = UITextView(frame: messageFrame)
+        contentMessage.editable = false
         contentMessage.text = "This is where the text will go for the message, this pic of me being a total bad ass ya know? like wooooo. And Just like pow and swooosh and the waves were like shooooo sham bam booom.";
-        contentMessage.font = UIFont(name: "Verdana" , size: 20)
+        contentMessage.font = UIFont(name: "Verdana" , size: 17)
         contentMessage.textColor = UIColor.darkGrayColor()
         self.addSubview(contentMessage)
         yLocation += contentMessage.frame.height
@@ -90,12 +91,12 @@ class ContentProfileView: UIView {
         
         let titleFrame =   CGRectMake(0, self.frame.height - titleHeight, self.frame.width , titleHeight)
         let titleView = UIView(frame: titleFrame)
-        
         //Username
         let creatorFrame = CGRectMake(2, 0, self.frame.width / 2 , titleHeight)
         let contentCreator = UILabel(frame: creatorFrame)
         contentCreator.text = "Chf11002"
         contentCreator.textColor = themeColor
+        contentCreator.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 16)
         titleView.addSubview(contentCreator)
         
         let buffer:CGFloat = 10
@@ -108,6 +109,8 @@ class ContentProfileView: UIView {
         contentLikes.text = "1623"
         contentLikes.textAlignment = NSTextAlignment.Left
         contentLikes.textColor = themeColor
+        contentLikes.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 16)
+        
         titleView.addSubview(contentLikes)
         
         //buttons

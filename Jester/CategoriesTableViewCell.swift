@@ -17,14 +17,14 @@ class CategoriesTableViewCell: UITableViewCell {
         //Change button image from selected to unselected and vice versa
         if categorySelected {
             categorySelected = false
-            if let image = UIImage(named: "unselected box"){
+            if let image = UIImage(named: "unselectedBox"){
                 selectOutlet.setImage(image, forState: .Normal)
             } else {
                 print("didnt exist")
             }
         } else {
             categorySelected = true
-            if let image = UIImage(named: "selected box"){
+            if let image = UIImage(named: "selectedBox"){
                 selectOutlet.setImage(image, forState: .Normal)
             } else {
                 print("didnt exist")

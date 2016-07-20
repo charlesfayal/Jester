@@ -10,6 +10,7 @@ import UIKit
 
 class PostInfoViewController: UIViewController {
   
+    @IBOutlet weak var creator: UILabel!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var message: UITextView!
     
@@ -18,7 +19,9 @@ class PostInfoViewController: UIViewController {
         
     }
     override func viewDidLoad() {
-        
+        image.image = selectedPost.contentImage
+        message.text = selectedPost.caption
+        creator.text = selectedPost.creator
     }
 
 }

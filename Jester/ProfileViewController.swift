@@ -7,41 +7,40 @@
 //
 
 import UIKit
-
-class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+import Parse
+class ProfileViewController: UIViewController, UITableViewDelegate,UITableViewDataSource{
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tortalLikesLabel: UILabel!
+    @IBOutlet weak var totalViewsLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     @IBAction func returnButton(sender: AnyObject) {
         self.performSegueWithIdentifier("unwindToMainScreen", sender: self)
     }
     @IBAction func settingsButton(sender: AnyObject) {
     }
-    var collectionWidth:CGFloat = 100
-
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
     }
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    }
-    //3
-     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("profileCell", forIndexPath: indexPath) as! PostCollectionViewCell
-        // Configure the cell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell:ProfileTableViewCell = tableView.dequeueReusableCellWithIdentifier("profileCell") as! ProfileTableViewCell
+        cell.postImage.image = UIImage(named: "Default Image")
+        cell.caption.text = "Test caption"
         return cell
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width = (collectionWidth - 6) / 3
-        print("cell width: \(width)")
-        return CGSizeMake(width, width)
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat           {
+        return 60
     }
-
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("selected with row: \(indexPath.row)")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionWidth = collectionView.frame.width
-        print(collectionWidth)
-     
+        usernameLabel.text = PFUser.currentUser()?.valueForKey("name")  as! String
+        //Replacing the profile title with an image
+
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
         imageView.contentMode = .ScaleAspectFit
         
@@ -51,7 +50,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         } else { print("profile image didn't work") }
         self.navigationItem.titleView = imageView
      
-         //Replacing the profile title with an image
     
     }
 

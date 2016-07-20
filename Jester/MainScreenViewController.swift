@@ -7,12 +7,16 @@
 //
 
 import UIKit
-
+import Parse
+var selectedPost:ContentProfile!
 class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
-    
+    //MARK Gesture Intializers
+    var swipeGesture: UIPanGestureRecognizer!
+    var tapGesture:UITapGestureRecognizer!
+    //MARK IBOutlets
+    @IBOutlet weak var categoriesOutlet: UIButton!
     var originalCenter:CGPoint = CGPoint()
-
-    
+    var nextProfile:ContentProfileView!
     @IBOutlet weak var buttonsView: UIView!
     @IBOutlet weak var profileView: UIView!
     //MARK: Navigational Buttons
@@ -21,12 +25,11 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     {
     //reload content
     }
-    @IBOutlet weak var categoriesOutlet: UIButton!
     
-    @IBOutlet weak var postButtonOutlet: UIButton!
    
     @IBAction func postButton(sender: AnyObject) {
-        self.performSegueWithIdentifier("toPost", sender: self)
+        
+        //self.performSegueWithIdentifier("toCreatePost", sender: self)
     }
 
     @IBAction func categoriesButton(sender: AnyObject)
@@ -43,6 +46,7 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBAction func commentButton(sender: AnyObject)
     {
+
         self.performSegueWithIdentifier("toComments", sender: self)
     }
     
@@ -50,6 +54,9 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     {
     }
 
+    func addPost(contentProfile: ContentProfile){
+        
+    }
     func wasDragged(gesture: UIPanGestureRecognizer)
     {
         let translation = gesture.translationInView(self.view)
@@ -64,6 +71,9 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         if gesture.state == UIGestureRecognizerState.Ended {
             if view.center.x < 100 {
                 print("left drag")
+                view.hidden = true
+                //nextProfile.hidden = false
+                
             } else if view.center.x > self.view.bounds.width - 100 {
                 print("right drag")
             }
@@ -78,18 +88,66 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     func wasTapped(gesture: UITapGestureRecognizer)
     {
-        let view = gesture.view //make content profile to get data
+        let view = gesture.view as! ContentProfileView
+        selectedPost = view.contentProfile
         self.performSegueWithIdentifier("toPostInfo", sender: self)
     }
-
+   // var profiles = [String:ContentProfile]()
+    func getProfiles(){
+        let profileQuery = PFQuery(className: "ContentProfile")
+        profileQuery.limit = 4
+        profileQuery.findObjectsInBackgroundWithBlock { (objects, error) in
+            if error != nil {
+                print(error)
+            } else {
+                for object in objects!{
+                    print(object)
+                    switch object["contentType"] as! String {
+                    case contentType.link.rawValue:
+                        print("post is link")
+                    case contentType.picture.rawValue:
+                        print("post is image")
+                        self.getProfileImages(object)
+                    default:
+                        print("post content type was not specified")
+                    }
+                }
+            }
+        }
+    }
+    func getProfileImages(profile: PFObject) {
+        print("getting profile images")
+        //let profileId = profile.objectId
+        if let imageFile = profile["imageFile"] {
+            imageFile.getDataInBackgroundWithBlock({ (imageData, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    if let data = imageData {
+                        let newProfile = ContentProfile(type: contentType.picture)
+                        newProfile.contentImage = UIImage(data: data)!
+                        newProfile.caption = profile["caption"] as! String
+                        newProfile.creator = profile["creator"] as! String
+                        let likes = profile["likes"]
+                        newProfile.likes = "\(likes)"
+                        //self.profiles[profile.objectId!] = newProfile
+                        self.addProfileView(newProfile)
+                    }
+                }
+            })
+        }
+    }
+    func addProfileView(contentProfile:ContentProfile){
+        let profile = ContentProfileView(frame: profileView.frame, type: .picture, contentProfile:contentProfile , delegate: self)
+        profile.addGestureRecognizer(swipeGesture)
+        profile.addGestureRecognizer(tapGesture)
+        self.view.addSubview(profile)
+    }
     override func viewDidLoad(){
         super.viewDidLoad()
-        //UI runtime changes
-        //buttonsView.layer.borderWidth = 1
-        //buttonsView.layer.borderColor = UIColor.grayColor().CGColor
-        
-        
-      
+        // Gestures
+         swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasDragged(_:)))
+         tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasTapped(_:)))
         
         let frame = categoriesOutlet.frame
         categoriesOutlet.frame = CGRectMake(frame.minX,frame.minY,self.view.frame.width / 2, frame.height)
@@ -101,31 +159,29 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         
         
         originalCenter = profileView.center
-        // Gestures
-        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasDragged(_:)))
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasTapped(_:)))
+
         //Add a profile
-        let profile = ContentProfileView(frame: profileView.frame, type: .picture)
+        /*
+        let contentProfile = ContentProfile(type: .link)
+        let profile = ContentProfileView(frame: profileView.frame, type: .link, contentProfile:contentProfile , delegate: self)
         profile.addGestureRecognizer(swipeGesture)
         profile.addGestureRecognizer(tapGesture)
-        self.view.addSubview(profile)
+        self.view.addSubview(profile)*/
+        
+        
+        getProfiles()
+        
+
         
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

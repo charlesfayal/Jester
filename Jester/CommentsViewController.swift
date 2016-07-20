@@ -27,7 +27,7 @@ class CommentsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cell:CommentsTableViewCell = tableView.dequeueReusableCellWithIdentifier("commentsCell") as! CommentsTableViewCell
         var comment = comments[indexPath.row]
-        print(comment)
+        //print(comment)
         cell.commentLabel.text = comments[indexPath.row]
         cell.creatorLabel.text = creators[indexPath.row]
         cell.timeLabel.text = times[indexPath.row]

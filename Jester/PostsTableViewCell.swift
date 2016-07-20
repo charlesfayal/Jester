@@ -9,7 +9,10 @@
 import UIKit
 
 class PostsTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var postText: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,7 +20,7 @@ class PostsTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        print("post selected")
         // Configure the view for the selected state
     }
 

@@ -19,14 +19,15 @@ class FriendTableViewCell: UITableViewCell {
         //Change button image from selected to unselected and vice versa
         if friendSelected {
             friendSelected = false
-            if let image = UIImage(named: "unselected box"){
+            if let image = UIImage(named: "unselectedBox"){
                 selectedBox.setImage(image, forState: .Normal)
             } else {
                 print("didnt exist")
             }
         } else {
             friendSelected = true
-            if let image = UIImage(named: "selected box"){
+            if let image = UIImage(named:
+                "selectedBox"){
                 selectedBox.setImage(image, forState: .Normal)
             } else {
                 print("didnt exist")

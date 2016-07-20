@@ -7,13 +7,11 @@
 //
 
 import UIKit
-enum contentType {
-    case link
-    case picture
-    case nothing
-}
+
 class ContentProfileView: UIView {
+    var delegate: MainScreenViewController!
     var profileType: contentType = .nothing
+    var contentProfile:ContentProfile!
     //UI space allocaitons
     let titleHeight: CGFloat = 40
 
@@ -27,9 +25,10 @@ class ContentProfileView: UIView {
         super.init(coder: aDecoder)
         nibSetup()
     }
-    init(frame: CGRect, type: contentType){
-        
+    init(frame: CGRect, type: contentType, contentProfile:ContentProfile, delegate:MainScreenViewController){
+        self.delegate = delegate
         profileType = type
+        self.contentProfile = contentProfile
     super.init(frame:frame)
         nibSetup()
 
@@ -46,7 +45,7 @@ class ContentProfileView: UIView {
     self.layer.borderColor = UIColor.lightGrayColor().CGColor
     self.layer.cornerRadius = 10
     self.clipsToBounds = true //clips anything that would go past rounded edges
-    print("profile sizes \(self.frame.height) \(self.frame.width)")
+    //print("profile sizes \(self.frame.height) \(self.frame.width)")
 
     var contentView = UIView()
     
@@ -69,7 +68,7 @@ class ContentProfileView: UIView {
         let messageFrame = CGRectMake(0, yLocation, self.frame.width, self.frame.height - yLocation - titleHeight)
         let contentMessage = UITextView(frame: messageFrame)
         contentMessage.editable = false
-        contentMessage.text = "This is where the text will go for the message, this pic of me being a total bad ass ya know? like wooooo. And Just like pow and swooosh and the waves were like shooooo sham bam booom.";
+        contentMessage.text = contentProfile.caption
         contentMessage.font = UIFont(name: "Verdana" , size: 17)
         contentMessage.textColor = UIColor.darkGrayColor()
         self.addSubview(contentMessage)
@@ -91,12 +90,14 @@ class ContentProfileView: UIView {
         
         let titleFrame =   CGRectMake(0, self.frame.height - titleHeight, self.frame.width , titleHeight)
         let titleView = UIView(frame: titleFrame)
+        titleView.layer.borderWidth = 1
+        titleView.layer.borderColor = UIColor.lightGrayColor().CGColor
         //Username
         let creatorFrame = CGRectMake(2, 0, self.frame.width / 2 , titleHeight)
         let contentCreator = UILabel(frame: creatorFrame)
-        contentCreator.text = "Chf11002"
+        contentCreator.text = self.contentProfile.creator
         contentCreator.textColor = themeColor
-        contentCreator.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 16)
+        contentCreator.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 18)
         titleView.addSubview(contentCreator)
         
         let buffer:CGFloat = 10
@@ -106,56 +107,60 @@ class ContentProfileView: UIView {
         xLocation -= likesLength
         let likesFrame = CGRectMake(xLocation, 0, likesLength, titleHeight)
         let contentLikes = UILabel(frame: likesFrame)
-        contentLikes.text = "1623"
+        contentLikes.text = contentProfile.likes
         contentLikes.textAlignment = NSTextAlignment.Left
         contentLikes.textColor = themeColor
-        contentLikes.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 16)
+        contentLikes.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 18)
         
         titleView.addSubview(contentLikes)
         
         //buttons
         let imageSize:CGFloat = 20
-        //lie button
+        //like button
         xLocation -= (buffer + imageSize)
-        var likeImage: UIImage = UIImage()
-        if let image = UIImage(named:"unlikedStar") {
-           likeImage = image
-        } else { print("issue with likes image") }
+        let likeImage = UIImage(named:"unlikedStar")
         let likeFrame = CGRectMake(xLocation , 8 , imageSize, imageSize)
-        let likeView = UIImageView(frame: likeFrame)
-        likeView.image = likeImage
+        let likeView = UIButton(frame: likeFrame)
+        likeView.addTarget(self, action: #selector(ContentProfileView.likeButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
+        likeView.setImage(likeImage, forState: .Normal)
         titleView.addSubview(likeView)
         
-        //comment image 
+        //comment button
         xLocation -= (buffer + imageSize)
-        var buttonImage: UIImage = UIImage()
-        if let image = UIImage(named:"commentButton") {
-            buttonImage = image
-        } else { print("issue with button image") }
+        let commentImage = UIImage(named:"commentButton")
         let buttonFrame = CGRectMake(xLocation , 8 , imageSize, imageSize)
-        let buttonView = UIImageView(frame: buttonFrame)
-        buttonView.image = buttonImage
+        let buttonView = UIButton(frame: buttonFrame)
+        buttonView.setImage(commentImage, forState: .Normal)
+        buttonView.addTarget(self, action: #selector(ContentProfileView.commentButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
         titleView.addSubview(buttonView)
         
-        //comment image
+        //share button
         xLocation -= (buffer + imageSize)
-        var shareImage: UIImage = UIImage()
-        if let image = UIImage(named:"shareButton") {
-            shareImage = image
-        } else { print("issue with button image") }
+       let shareImage = UIImage(named:"shareButton")
         let shareFrame = CGRectMake(xLocation , 8 , imageSize, imageSize)
-        let shareView = UIImageView(frame: shareFrame)
-        shareView.image = shareImage
+        let shareView = UIButton(frame: shareFrame)
+        shareView.setImage(shareImage, forState: .Normal)
+        shareView.addTarget(self, action: #selector(ContentProfileView.viewButtonPressed), forControlEvents: UIControlEvents.TouchUpInside)
         titleView.addSubview(shareView)
         
         
         return titleView
     }
+    func likeButtonPressed(){
+        print("like button pressed")
+    }
+    func commentButtonPressed(){
+        print("comment button pressed")
+        delegate.performSegueWithIdentifier("toComment", sender: delegate)
+    }
+    func viewButtonPressed(){
+        print("view button pressed")
+    }
     func picture() -> UIImageView{
         let pictureFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height / 2)
         let imageFrame = pictureFrame
         let imageView = UIImageView(frame: imageFrame)
-        imageView.image = UIImage(named:"Default Image")
+        imageView.image = self.contentProfile.contentImage
         imageView.contentMode = UIViewContentMode.ScaleToFill
         return imageView
     }
@@ -163,7 +168,7 @@ class ContentProfileView: UIView {
     func website()-> UIWebView{
         let webViewFrame = CGRectMake(0 , 0 , self.frame.width, self.frame.height - titleHeight)
         let webView = UIWebView(frame: webViewFrame)
-        let url = NSURL(string: "https://www.google.com/?gws_rd=ssl")! // converts to a url
+        let url:NSURL = self.contentProfile.link
         
         webView.loadRequest(NSURLRequest(URL: url)) // shows the webpage, but you don't get the content, less capabiltities
         

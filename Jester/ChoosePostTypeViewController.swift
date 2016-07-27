@@ -8,15 +8,15 @@
 
 import UIKit
 var selectedImage:UIImage!
-class CreateContentViewController: UIViewController,UIImagePickerControllerDelegate , UINavigationControllerDelegate {
-    
+class ChoosePostTypeViewController: UIViewController,UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+    //MARK Buttons
     @IBAction func creatLinkButton(sender: AnyObject) {
     }
     
     @IBAction func createImageButton(sender: AnyObject) {
         chooseImage(self)
-
     }
+    //MARK Image functions
     @IBAction func chooseImage(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -33,9 +33,9 @@ class CreateContentViewController: UIViewController,UIImagePickerControllerDeleg
         }
    
     }
-  //  @IBOutlet weak var message: UITextField!
-   /* @IBOutlet weak var imageToPost: UIImage =  UIImage()*/
+    //MARK Link option functions
     
+
     
     func displayAlert(title: String, message: String) {
         

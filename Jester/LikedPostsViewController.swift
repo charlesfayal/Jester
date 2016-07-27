@@ -9,7 +9,7 @@
 import UIKit
 
 class LikedPostsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-    
+    var likedPosts = [ContentProfile]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBAction func followButton(sender: AnyObject) {
@@ -20,12 +20,13 @@ class LikedPostsViewController: UIViewController, UITableViewDelegate, UITableVi
   
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return likedPosts.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:PostsTableViewCell = tableView.dequeueReusableCellWithIdentifier("likedCell") as! PostsTableViewCell
-        //cell = UIImage(named: "Default Image")
-        //cell.textLabel!.text = "Test"
+        let cellProfile = likedPosts[indexPath.row]
+        cell.postImage.image = cellProfile.contentImage
+        cell.postText.text = cellProfile.caption
         return cell
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat           {
@@ -37,6 +38,8 @@ class LikedPostsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        likedPosts = contentManager.updateLikedPosts()
           tableView.tableFooterView = UIView(frame: CGRect.zero)
       
         

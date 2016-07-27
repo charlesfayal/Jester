@@ -15,15 +15,23 @@ enum contentType : String{
 }
 class ContentProfile {
     //General
+    var objectId:String = ""
     var type:contentType = .nothing
-    var caption:String = "This is the default caption"
-    var creator:String = "StevyCreator"
-    var likes:String = "1622"
-    //Link
-    var link:NSURL = NSURL(string: "https://Google.com")!
-    //Image
-    var contentImage:UIImage = UIImage(named: "Default Image")!
+    var caption:String = ""
+    var creator:String = ""
+    var likes = [String]()
     
+    var liked:Bool = false
+    
+    var previousProfile:ContentProfile!
+    var nextProfile:ContentProfile!
+    //Link
+    var link:NSURL = NSURL()
+    //Image
+    var contentImage:UIImage!
+    init(){
+        
+    }
     init(type:contentType){
         self.type = type
     }

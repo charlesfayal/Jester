@@ -49,14 +49,58 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     {
     }
     func changeTopProfileView(profile:ContentProfile){
+        print("\(profile.objectId) became top profile view")
         if topProfileView != nil {
             topProfileView.removeFromSuperview()
         }
-        topProfileView = ContentProfileView(frame: profileView.frame,  contentProfile: profile, swipeScreen: self)
+        topProfileView = profile.createView(profileView.frame, swipeScreen: self)
         self.addSwipeGesture(topProfileView)
         self.addTapGesture(topProfileView.contentView)
         self.view.addSubview(topProfileView)
     }
+
+    var updateTimer = NSTimer()
+    func updateProfiles(){
+        contentManager.updateProfiles() // gets profiles
+        
+    }
+    override func viewWillAppear(animated: Bool) {
+        updateProfiles()
+        //updateTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(MainScreenViewController.updateProfiles), userInfo: nil, repeats: true)
+    }
+
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        
+        contentManager.swipeScreen = self
+        originalCenter = profileView.center // used for after drag
+
+        // Gestures
+         swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasDragged(_:)))
+         tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasTapped(_:)))
+    
+        //UI adjustments
+        let frame = categoriesOutlet.frame
+        categoriesOutlet.frame = CGRectMake(frame.minX,frame.minY,self.view.frame.width / 2, frame.height)
+        categoriesOutlet.layer.borderWidth = 1
+        categoriesOutlet.layer.borderColor = UIColor.lightGrayColor().CGColor
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    
+    // MARK: - Navigation
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        updateTimer.invalidate()
+
+    }
+    
+    //MARK: -Gestures
     func wasDragged(gesture: UIPanGestureRecognizer)
     {
         let translation = gesture.translationInView(self.view)
@@ -81,12 +125,12 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
             view.center = originalCenter
         }
     }
-
+    
     func wasTapped(gesture: UITapGestureRecognizer)
     {
         print("was tapped")
-        let view = gesture.view as! ContentProfileView
-        selectedPost = view.contentProfile
+        
+        selectedPost = topProfileView.contentProfile
         self.performSegueWithIdentifier("toPostInfo", sender: self)
     }
     func addTapGesture(view: UIView){
@@ -94,54 +138,8 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     func addSwipeGesture(view:UIView){
         view.addGestureRecognizer(swipeGesture)
-
-    }
-    func updateProfiles(){
-        contentManager.updateProfiles() // gets profiles
-
-    }
-    var updateTimer = NSTimer()
-    override func viewWillAppear(animated: Bool) {
-        updateTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(MainScreenViewController.updateProfiles), userInfo: nil, repeats: true)
-    }
-
-    override func viewDidDisappear(animated: Bool) {
-    }
-    override func viewDidLoad(){
-        super.viewDidLoad()
-        
-        contentManager.swipeScreen = self
-        
-        // Gestures
-         swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasDragged(_:)))
-         tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasTapped(_:)))
-        
-        originalCenter = profileView.center // used for after drag
-
-        
-        //UI adjustments
-        let frame = categoriesOutlet.frame
-        categoriesOutlet.frame = CGRectMake(frame.minX,frame.minY,self.view.frame.width / 2, frame.height)
-        categoriesOutlet.layer.borderWidth = 1
-        //categoriesOutlet.layer.cornerRadius = 5
-        
-        categoriesOutlet.layer.borderColor = UIColor.lightGrayColor().CGColor
-        
-
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     
-    // MARK: - Navigation
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        updateTimer.invalidate()
-
-    }
 }

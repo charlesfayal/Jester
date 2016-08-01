@@ -7,18 +7,35 @@
 //
 
 import UIKit
-class ContentProfileView: UIView {
+import Foundation
+protocol ProfileView {
+    func update()
+}
+/**
+ This is the parent class to all the swipe screens. This class creates the swipe box, its buttons, adds username, likes for the post etc..
+ Children profile add all of the content that should go in the contentView
+ */
+class ContentProfileView: UIView, ProfileView {
     var swipeScreen: MainScreenViewController!
-    var profileType: contentType = .nothing
-    var contentProfile:ContentProfile!
+    
+    var contentProfile:ContentProfile! //Not sure if it should even have this variable
+    
     var previousProfile: ContentProfileView!
     var nextProfile: ContentProfileView!
-    var contentView: UIView!
+    
+    var contentView:UIView!
     
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var commentButton: UIButton!
     @IBOutlet var shareButton: UIButton!
     @IBOutlet var likesLabel: UILabel!
+    
+    //Necessary variables
+    var likes:Int!
+    var creator:String!
+    var liked:Bool = false
+    var objectId: String!
+    
     
     //UI space allocaitons
     let titleHeight: CGFloat = 40
@@ -33,67 +50,50 @@ class ContentProfileView: UIView {
         super.init(coder: aDecoder)
         nibSetup()
     }
-    init(frame: CGRect,  contentProfile:ContentProfile, swipeScreen:MainScreenViewController){
+    init(frame: CGRect, contentProfile: ContentProfile, swipeScreen:MainScreenViewController){
         self.swipeScreen = swipeScreen
-        profileType = contentProfile.type
         self.contentProfile = contentProfile
+        
+        creator = contentProfile.creator
+        likes = contentProfile.likes.count
+        liked = contentProfile.liked
+        objectId = contentProfile.objectId
     super.init(frame:frame)
         nibSetup()
 
     }
-
+    func update(){
+        creator = contentProfile.creator
+        likes = contentProfile.likes.count
+        liked = contentProfile.liked
+        objectId = contentProfile.objectId
+        
+        
+    }
    private func nibSetup() {
     //if we want to add shadow I need to make a shadow view
     //self.layer.shadowColor = UIColor.purpleColor().CGColor
     //self.layer.shadowRadius = 3
     
-    var yLocation:CGFloat = 0
     self.backgroundColor = UIColor.whiteColor()
     self.layer.borderWidth = 1
     self.layer.borderColor = UIColor.lightGrayColor().CGColor
     self.layer.cornerRadius = 10
     self.clipsToBounds = true //clips anything that would go past rounded edges
-    //print("profile sizes \(self.frame.height) \(self.frame.width)")
 
     
-    switch profileType {
-    case contentType.picture:
-        print("picture profile")
-        contentView = picture()
-    case contentType.link:
-        print("link profile")
-        contentView = website()
-    default:
-        print("no profile type found")
-    }
-    self.addSubview(contentView)
-    yLocation += contentView.frame.height
-    
- 
-    
-    if profileType == .picture {
-        let messageFrame = CGRectMake(0, yLocation, self.frame.width, self.frame.height - yLocation - titleHeight)
-        let contentMessage = UITextView(frame: messageFrame)
-        contentMessage.editable = false
-        contentMessage.text = contentProfile.caption
-        contentMessage.font = UIFont(name: "Verdana" , size: 17)
-        contentMessage.textColor = UIColor.darkGrayColor()
-        self.addSubview(contentMessage)
-        yLocation += contentMessage.frame.height
-    }
-    
+    //title view is where username and share, like etc buttons are
     let titleView = createTitleView()
-
-    
     self.addSubview(titleView)
-    yLocation += titleHeight
-
-
+    
+    let contentViewFrame = CGRect(origin: CGPoint(x: 0,y:0) , size: CGSize(width: self.frame.height, height: self.frame.height - titleView.frame.height))
+    contentView = UIView(frame: contentViewFrame)
+    self.addSubview(contentView)
     self.userInteractionEnabled = true
 
     }
     func createTitleView() -> UIView {
-        //titel frame
+        //title frame
         
         let titleFrame =   CGRectMake(0, self.frame.height - titleHeight, self.frame.width , titleHeight)
         let titleView = UIView(frame: titleFrame)
@@ -102,7 +102,7 @@ class ContentProfileView: UIView {
         //Username
         let creatorFrame = CGRectMake(2, 0, self.frame.width / 2 , titleHeight)
         let contentCreator = UILabel(frame: creatorFrame)
-        contentCreator.text = self.contentProfile.creator
+        contentCreator.text = self.creator
         contentCreator.textColor = themeColor
         contentCreator.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 18)
         titleView.addSubview(contentCreator)
@@ -114,7 +114,7 @@ class ContentProfileView: UIView {
         xLocation -= likesLength
         let likesFrame = CGRectMake(xLocation, 0, likesLength, titleHeight)
         let commentLabel = UILabel(frame: likesFrame)
-        commentLabel.text = "\(contentProfile.likes)"
+        commentLabel.text = "\(self.likes)"
         commentLabel.textAlignment = NSTextAlignment.Left
         commentLabel.textColor = themeColor
         commentLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 18)
@@ -126,7 +126,7 @@ class ContentProfileView: UIView {
         //like button
         xLocation -= (buffer + imageSize)
         var likeImage = UIImage()
-        if contentProfile.liked {
+        if self.liked{
             likeImage = UIImage(named:"likedStar")!
         } else {
             likeImage = UIImage(named:"unlikedStar")!
@@ -160,12 +160,12 @@ class ContentProfileView: UIView {
     }
      func likeButtonPressed(sender: AnyObject){
         print("like button pressed")
-        if contentProfile.liked {
-            contentProfile.liked = false
+        if (self.liked == true) {
+            self.liked = false
             likeButton.setImage(UIImage(named: "unlikedStar"), forState: .Normal)
             contentManager.profileDisliked(self.contentProfile)
         } else {
-            contentProfile.liked = true
+            self.liked = true
             likeButton.setImage(UIImage(named: "likedStar"), forState: .Normal)
             contentManager.profileLiked(self.contentProfile)
         }
@@ -179,32 +179,5 @@ class ContentProfileView: UIView {
         swipeScreen.performSegueWithIdentifier("toShare", sender: swipeScreen)
 
     }
-    func picture() -> UIImageView{
-        let pictureFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height / 2)
-        let imageFrame = pictureFrame
-        let imageView = UIImageView(frame: imageFrame)
-        imageView.image = self.contentProfile.contentImage
-        imageView.contentMode = UIViewContentMode.ScaleToFill
-        return imageView
-    }
-    
-    func website()-> UIWebView{
-        let webViewFrame = CGRectMake(0 , 0 , self.frame.width, self.frame.height - titleHeight)
-        let webView = UIWebView(frame: webViewFrame)
-        let url:NSURL = self.contentProfile.link
-        
-        webView.loadRequest(NSURLRequest(URL: url)) // shows the webpage, but you don't get the content, less capabiltities
-        
-       /* let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (data , response , error) -> Void in
-            if let urlContent = data {
-                let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding) // decode website data
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    webView.loadHTMLString(String(webContent), baseURL: nil)
-                })
-            } else { print("Error \(error)") }
-        }*/
-        //task.resume()
-        return webView
-    }
+
 }

@@ -56,11 +56,17 @@ class ContentManager{
     func profileLiked(contentProfile:ContentProfile){
         PFUser.currentUser()!.addUniqueObjectsFromArray([contentProfile.objectId], forKey: "liked")
         PFUser.currentUser()?.saveInBackground()
+        contentProfile.parseObject.addUniqueObjectsFromArray([contentProfile.objectId], forKey: "likes")
+        contentProfile.parseObject.saveInBackground()
+        PFObject(className: "ContentProfile")
+        contentProfile.contentView.update() //not working properly... doesn't save in time in background
     }
     func profileDisliked(contentProfile:ContentProfile){
         PFUser.currentUser()?.removeObjectsInArray([contentProfile.objectId], forKey: "liked")
         PFUser.currentUser()?.saveInBackground()
-
+        contentProfile.parseObject.removeObjectsInArray([contentProfile.objectId], forKey: "likes")
+        contentProfile.parseObject.saveInBackground()
+        contentProfile.contentView.update()
     }
     //MARK Saving data to Parse
     func newPost(contentProfile: ContentProfile, sender: ParseViewController){
@@ -150,6 +156,7 @@ class ContentManager{
         profileQuery.limit = 4 - profilesOnDeck.count
         performQueryForProfiles(profileQuery, arrayToAddTo: .profilesOnDeck)
     }
+    
     func performQueryForProfiles(query: PFQuery, arrayToAddTo:Arrays ){
         query.findObjectsInBackgroundWithBlock { (objects, error) in
             if error != nil {
@@ -160,6 +167,7 @@ class ContentManager{
                         self.seenProfiles.append(object.objectId!)
                     }
                     let newProfile = self.createProfileFromObject(object)
+                    newProfile.parseObject = object
                     switch( arrayToAddTo){
                     case .profilesOnDeck:
                             self.addToProfilesOnDeck(newProfile)
@@ -203,10 +211,12 @@ class ContentManager{
         if object["likes"] != nil {
             newProfile.likes = object["likes"] as! [String] //Possible error as it is just and array in Parse
            
-        } else { print( "no likes") } 
+        } else { print( "no likes") }
+
         uploadImageToProfile(object, contentProfile: newProfile)
         return newProfile
     }
+    
     func uploadImageToProfile(profile:PFObject , contentProfile: ContentProfile)  {
         print("getting profile's image")
         if let imageFile = profile["imageFile"] {
@@ -215,7 +225,8 @@ class ContentManager{
                     print(error)
                 } else {
                     if let data = imageData {
-                        contentProfile.contentImage = UIImage(data: data)! // these could use error protection
+                        print("image loaded for \(contentProfile.objectId)")
+                        contentProfile.setImage(UIImage(data: data)! )                        
                     }
                 }
             })

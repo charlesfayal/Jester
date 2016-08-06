@@ -10,6 +10,8 @@ import Foundation
 import Parse
 class AccountManager {
     static let sharedInstance = AccountManager() //Singleton instance
+    
+    
     init(){
         
     }

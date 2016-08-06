@@ -54,19 +54,37 @@ class ContentManager{
     }
     
     func profileLiked(contentProfile:ContentProfile){
+        print("\(contentProfile.objectId) - post liked")
+        contentProfile.liked = true
+        //Save profile to users likes
         PFUser.currentUser()!.addUniqueObjectsFromArray([contentProfile.objectId], forKey: "liked")
         PFUser.currentUser()?.saveInBackground()
-        contentProfile.parseObject.addUniqueObjectsFromArray([contentProfile.objectId], forKey: "likes")
+        //save user to profiles likes
+        contentProfile.parseObject.addUniqueObjectsFromArray([PFUser.currentUser()!.objectId!], forKey: "likes")
         contentProfile.parseObject.saveInBackground()
-        PFObject(className: "ContentProfile")
-        contentProfile.contentView.update() //not working properly... doesn't save in time in background
+        //Add to local profile
+        //May need to add more into this
+        if !contentProfile.likes.contains((PFUser.currentUser()?.objectId!)!){
+            contentProfile.likes.append(PFUser.currentUser()!.objectId!)
+            contentProfile.swipeView.update()
+        }
     }
     func profileDisliked(contentProfile:ContentProfile){
+        
+        print("\(contentProfile.objectId) - post unliked")
+        //Delete profile to users likes
         PFUser.currentUser()?.removeObjectsInArray([contentProfile.objectId], forKey: "liked")
         PFUser.currentUser()?.saveInBackground()
-        contentProfile.parseObject.removeObjectsInArray([contentProfile.objectId], forKey: "likes")
+        //Delete user to profiles likes
+        contentProfile.parseObject.removeObjectsInArray([PFUser.currentUser()!.objectId!], forKey: "likes")
         contentProfile.parseObject.saveInBackground()
-        contentProfile.contentView.update()
+        contentProfile.liked = false
+        //Remove from local profile
+        if !contentProfile.likes.contains((PFUser.currentUser()?.objectId!)!){
+            let userIndex = contentProfile.likes.indexOf(PFUser.currentUser()!.objectId!)
+            contentProfile.likes.removeAtIndex(userIndex!)
+            contentProfile.swipeView.update()
+        }
     }
     //MARK Saving data to Parse
     func newPost(contentProfile: ContentProfile, sender: ParseViewController){

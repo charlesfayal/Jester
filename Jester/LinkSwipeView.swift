@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class LinkProfileView: ContentProfileView{
+class LinkProfileView: SwipeView{
     /*
     func website()-> UIWebView{
         let webViewFrame = CGRectMake(0 , 0 , self.frame.width, self.frame.height - titleHeight)

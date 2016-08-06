@@ -22,7 +22,7 @@ class ContentProfile {
     var caption:String = ""
     var creator:String = ""
     var likes = [String]()
-    /*weak*/ var contentView:ContentProfileView!
+    /*weak*/ var swipeView:SwipeView!
     
     var liked:Bool = false
     
@@ -40,28 +40,38 @@ class ContentProfile {
     }
     func setImage(image: UIImage){
         contentImage = image
-        if contentView != nil {
-            contentView.contentProfile = self
-            contentView.update()
-            print("\(self.objectId) image added and view updated")
+        if swipeView != nil {
+            
+            swipeView.update()
+            print("\(self.objectId) - image added and view updated")
         } else {
-            print("\(self.objectId) image added but no view")
+            print("\(self.objectId) - image added but no view")
 
         }
     }
-    func createView(frame:CGRect, swipeScreen: MainScreenViewController) -> ContentProfileView{
-        if contentView == nil {
+    func getSwipeView(swipeScreen: MainScreenViewController)->SwipeView{
+        if swipeView == nil {
+            print("\(self.objectId) - creating swipe view")
+            createSwipeView(swipeScreen)
+        }
+        return swipeView
+    }
+    func createSwipeView(swipeScreen: MainScreenViewController) {
+        if swipeView == nil {
             switch self.type {
             case .picture:
-                contentView = ImageProfileView(frame: frame, contentProfile:self, swipeScreen: swipeScreen)
+                print("\(self.objectId) - creating image swipe view")
+
+                swipeView = SwipeView(frame: swipeScreen.profileView.frame, contentProfile: self)
+                swipeView.contentProfile = self
+                
             case .link:
                 print("link type")
-                contentView = LinkProfileView(frame: frame, contentProfile:self, swipeScreen: swipeScreen)
+                //contentView = LinkProfileView(frame: frame, contentProfile:self, swipeScreen: swipeScreen)
             case .nothing:
                 print("nothing as type")
             }
         }
-        return contentView
-
+        if swipeView == nil { print( "\(self.objectId) issue creating swipe view") }
     }
 }

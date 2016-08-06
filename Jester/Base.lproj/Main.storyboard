@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Z0x-gl-5bt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Z0x-gl-5bt">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -55,28 +55,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqx-rv-xBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-357.5" y="-1125.5"/>
-        </scene>
-        <!--ContentProfileView-->
-        <scene sceneID="TBL-Vd-aEu">
-            <objects>
-                <viewController title="ContentProfileView" id="GZD-Lr-Db0" customClass="ContentProfileViewController" customModule="Jester" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aZi-qj-Ebe"/>
-                        <viewControllerLayoutGuide type="bottom" id="4sg-DW-sC6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="z2r-Py-fFu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.98431372549999996" green="0.25882352939999997" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vrH-rq-jpd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-746.5" y="-340.5"/>
         </scene>
         <!--Categories View Controller-->
         <scene sceneID="9Uy-1f-U5i">
@@ -335,7 +313,7 @@
         <!--Swipe Screen-->
         <scene sceneID="lnl-ld-9zO">
             <objects>
-                <viewController title="Swipe Screen" id="Pyc-VD-e6n" customClass="MainScreenViewController" customModule="Jester" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" title="Swipe Screen" id="Pyc-VD-e6n" customClass="MainScreenViewController" customModule="Jester" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S0o-ME-Dpn"/>
                         <viewControllerLayoutGuide type="bottom" id="Ly8-sD-dvb"/>
@@ -419,44 +397,32 @@
                                     <constraint firstItem="Ou9-z3-gGm" firstAttribute="centerY" secondItem="Ixl-YW-bFT" secondAttribute="centerY" constant="5" id="tfP-wg-8dj"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2K-qj-3Tk">
-                                <rect key="frame" x="1" y="126" width="373" height="541"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Profiles to show, make this pretty" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPD-ew-MSE">
-                                        <rect key="frame" x="47" y="260" width="280" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Rd-5d-ty2" customClass="SwipeView" customModule="Jester" customModuleProvider="target">
+                                <rect key="frame" x="-4" y="75" width="383" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="pPD-ew-MSE" firstAttribute="centerX" secondItem="C2K-qj-3Tk" secondAttribute="centerX" id="MZn-ET-D58"/>
-                                    <constraint firstItem="pPD-ew-MSE" firstAttribute="centerY" secondItem="C2K-qj-3Tk" secondAttribute="centerY" id="iAa-Sa-d2B"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="C2K-qj-3Tk" firstAttribute="top" secondItem="F6C-LZ-FeE" secondAttribute="bottom" id="Aan-EI-XTy"/>
+                            <constraint firstItem="Ly8-sD-dvb" firstAttribute="top" secondItem="7Rd-5d-ty2" secondAttribute="bottom" id="8vn-lV-auJ"/>
                             <constraint firstItem="Ixl-YW-bFT" firstAttribute="top" secondItem="H3Q-VO-TLS" secondAttribute="topMargin" id="Brc-r3-N4o"/>
-                            <constraint firstItem="Ly8-sD-dvb" firstAttribute="top" secondItem="C2K-qj-3Tk" secondAttribute="bottom" id="Ldo-ie-5Lw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="C2K-qj-3Tk" secondAttribute="trailing" constant="-15" id="NcN-05-KT0"/>
-                            <constraint firstItem="Ly8-sD-dvb" firstAttribute="top" secondItem="C2K-qj-3Tk" secondAttribute="bottom" constant="89" id="S6z-bD-oBU"/>
+                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" id="GND-GV-0Dn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ixl-YW-bFT" secondAttribute="trailing" constant="-24" id="Ylt-Oh-4NK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="F6C-LZ-FeE" secondAttribute="trailing" constant="-20" id="Z1M-XL-TM6"/>
-                            <constraint firstItem="C2K-qj-3Tk" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-15" id="jp2-am-4YA"/>
+                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-20" id="bUP-j8-P6P"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Rd-5d-ty2" secondAttribute="trailing" id="bcV-4z-Cjc"/>
+                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="top" secondItem="F6C-LZ-FeE" secondAttribute="bottom" id="fNg-3U-PxL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Rd-5d-ty2" secondAttribute="trailing" constant="-20" id="jE0-p7-coT"/>
                             <constraint firstItem="F6C-LZ-FeE" firstAttribute="top" secondItem="Ixl-YW-bFT" secondAttribute="bottom" id="kJD-Tj-Bzg"/>
-                            <constraint firstItem="C2K-qj-3Tk" firstAttribute="top" secondItem="F6C-LZ-FeE" secondAttribute="bottom" id="kn1-Rm-x9P"/>
                             <constraint firstItem="Ixl-YW-bFT" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-20" id="lwM-rj-bcc"/>
+                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="top" secondItem="Ixl-YW-bFT" secondAttribute="bottom" id="ne0-QO-dnW"/>
                             <constraint firstItem="F6C-LZ-FeE" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-20" id="pE4-d3-WGF"/>
-                            <constraint firstItem="C2K-qj-3Tk" firstAttribute="top" secondItem="F6C-LZ-FeE" secondAttribute="bottom" constant="1" id="sRw-WY-5v4"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Aan-EI-XTy"/>
-                                <exclude reference="kn1-Rm-x9P"/>
-                                <exclude reference="S6z-bD-oBU"/>
+                                <exclude reference="GND-GV-0Dn"/>
+                                <exclude reference="bcV-4z-Cjc"/>
+                                <exclude reference="fNg-3U-PxL"/>
                             </mask>
                         </variation>
                     </view>
@@ -464,7 +430,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="categoriesOutlet" destination="SLh-OJ-jh5" id="axN-zP-MXA"/>
-                        <outlet property="profileView" destination="C2K-qj-3Tk" id="1bC-AN-QSV"/>
+                        <outlet property="profileView" destination="7Rd-5d-ty2" id="9XK-cR-vE4"/>
                         <segue destination="dyA-xZ-Ehn" kind="show" identifier="toCategories" id="3EJ-23-Hje"/>
                         <segue destination="xCR-nl-ppz" kind="show" identifier="toComments" id="Ohw-eU-Ilo"/>
                         <segue destination="5s4-eo-ZcR" kind="show" identifier="toPostInfo" id="SC8-be-pjx"/>

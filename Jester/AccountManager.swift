@@ -11,7 +11,7 @@ import Parse
 class AccountManager {
     static let sharedInstance = AccountManager() //Singleton instance
     
-    
+    var usersCategories = [String]()
     init(){
         
     }

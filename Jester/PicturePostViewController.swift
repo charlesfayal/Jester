@@ -9,81 +9,39 @@
 import UIKit
 import Parse
 
-class PicturePostViewController: ParseViewController {
-    
-    var tapGesture:UITapGestureRecognizer!
+class PicturePostViewController: CreatePostViewController {
     
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var captionText: UITextView!
-    //Mark Gestures
-    @IBAction func screenTapped(sender: UITapGestureRecognizer)
-    {
-        print("screen tapped")
-        self.view.endEditing(true)
-    }
-    //MARK Buttons
-    @IBAction func returnButton(sender: AnyObject) {
-        self.performSegueWithIdentifier("unwindToMainScreen", sender: self)
-    }
-    @IBAction func postButton(sender: AnyObject) {
-        let newPost = ContentProfile(type: .picture)
-        newPost.contentImage = postImage.image!
-        //newPost.creator = currentUser ***
-        newPost.caption = captionText.text
-        newPost.creator = PFUser.currentUser()?.valueForKey("name")! as! String
-        createPost()
-    }
-    //MARK Adding caption 
-    /**
-     Dismisses the keyboard on return
-    */
-    
-    func createPost() {
+
+
+    //MARK creating the post functions
+    override func createPost() -> Bool {
         if captionText.text == "" {
             displayAlert("No description", message: "Please add a description")
+            return false
         } else {
            self.startActivityIndicator()
-            let newContentProfile = ContentProfile(type: .picture)
+            newContentProfile = ContentProfile(type: .picture)
             newContentProfile.caption = captionText.text
             newContentProfile.creator = PFUser.currentUser()?.valueForKey("name") as! String
             newContentProfile.contentImage = postImage.image
-        
-            contentManager.newPost(newContentProfile, sender: self)
+            return true
         }
+
     }
-    //MARK Activity Indicator 
-    /**
-     Stops user interaction and puts a activity indicator on the screen
-    */
-
-    
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if selectedImage  != nil {
             postImage!.image = selectedImage
         } else { print("selected image is nil")}
-        tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.screenTapped(_:)))
-        self.view.addGestureRecognizer(tapGesture)
-   
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        
 
 }

@@ -57,8 +57,8 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
             topView = topProfile.getSwipeView(self)
             topView.removeFromSuperview()
         }
-        topView = profile.getSwipeView(self) as SwipeView
         topProfile = profile
+        topView = topProfile.getSwipeView(self) as SwipeView
         self.addSwipeGesture(topView)
         self.addTapGesture(topView.contentView)
         self.view.addSubview(topView)
@@ -105,7 +105,6 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         updateTimer.invalidate()
-
     }
     
     //MARK: -Gestures
@@ -113,6 +112,7 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     {
         let translation = gesture.translationInView(self.view)
         let view = gesture.view!
+        print("\(view.subviews.first?.frame)")
         view.center = CGPoint(x: profileView.center.x + translation.x, y: self.profileView.center.y + translation.y) // relative to bottom left of screen
         let xFromCenter = view.center.x - self.view.bounds.width/2
         let scale = 300 / (abs(xFromCenter) + 300 )
@@ -139,9 +139,15 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     func wasTapped(gesture: UITapGestureRecognizer)
     {
         print("was tapped")
-        
         selectedPost = topProfile
-        self.performSegueWithIdentifier("toPostInfo", sender: self)
+        switch selectedPost.type {
+        case .link:
+            self.performSegueWithIdentifier("toLinkInfo", sender: self)
+        case .picture:
+            self.performSegueWithIdentifier("toPictureInfo", sender: self)
+        case .nothing:
+            print("\(selectedPost.objectId) - nothing as content type ")
+        }
     }
     func addTapGesture(view: UIView){
         view.addGestureRecognizer(tapGesture)

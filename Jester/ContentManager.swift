@@ -26,6 +26,7 @@ class ContentManager{
     var likedPosts = [ContentProfile]()
     var seenProfiles = [String]()
 
+    var categories = [String]()
     
 
     
@@ -56,76 +57,86 @@ class ContentManager{
     func profileLiked(contentProfile:ContentProfile){
         print("\(contentProfile.objectId) - post liked")
         contentProfile.liked = true
-        //Save profile to users likes
-        PFUser.currentUser()!.addUniqueObjectsFromArray([contentProfile.objectId], forKey: "liked")
-        PFUser.currentUser()?.saveInBackground()
-        //save user to profiles likes
-        contentProfile.parseObject.addUniqueObjectsFromArray([PFUser.currentUser()!.objectId!], forKey: "likes")
-        contentProfile.parseObject.saveInBackground()
-        //Add to local profile
-        //May need to add more into this
         if !contentProfile.likes.contains((PFUser.currentUser()?.objectId!)!){
+            //Add to local profile
             contentProfile.likes.append(PFUser.currentUser()!.objectId!)
             contentProfile.swipeView.update()
+            //Save profile to users likes
+            PFUser.currentUser()!.addUniqueObjectsFromArray([contentProfile.objectId], forKey: "liked")
+            PFUser.currentUser()?.saveInBackground()
+            //save user to profiles likes
+            contentProfile.parseObject.addUniqueObjectsFromArray([PFUser.currentUser()!.objectId!], forKey: "likes")
+            contentProfile.parseObject.saveInBackground()
         }
     }
     func profileDisliked(contentProfile:ContentProfile){
-        
-        print("\(contentProfile.objectId) - post unliked")
-        //Delete profile to users likes
-        PFUser.currentUser()?.removeObjectsInArray([contentProfile.objectId], forKey: "liked")
-        PFUser.currentUser()?.saveInBackground()
-        //Delete user to profiles likes
-        contentProfile.parseObject.removeObjectsInArray([PFUser.currentUser()!.objectId!], forKey: "likes")
-        contentProfile.parseObject.saveInBackground()
         contentProfile.liked = false
-        //Remove from local profile
-        if !contentProfile.likes.contains((PFUser.currentUser()?.objectId!)!){
+
+        print("\(contentProfile.objectId) - post unliked")
+        if contentProfile.likes.contains((PFUser.currentUser()?.objectId!)!){
+            //Remove from local profile
             let userIndex = contentProfile.likes.indexOf(PFUser.currentUser()!.objectId!)
             contentProfile.likes.removeAtIndex(userIndex!)
             contentProfile.swipeView.update()
+            //Delete profile to users likes
+            PFUser.currentUser()?.removeObjectsInArray([contentProfile.objectId], forKey: "liked")
+            PFUser.currentUser()?.saveInBackground()
+            //Delete user to profiles likes
+            contentProfile.parseObject.removeObjectsInArray([PFUser.currentUser()!.objectId!], forKey: "likes")
+            contentProfile.parseObject.saveInBackground()
         }
+    
+
     }
-    //MARK Saving data to Parse
+    //MARK - Category related functions
+    
+    //MARK - Saving data to Parse
+    var timeOutTimer:NSTimer = NSTimer()
     func newPost(contentProfile: ContentProfile, sender: ParseViewController){
-        
+            timeOutTimer = NSTimer.scheduledTimerWithTimeInterval(60 * 3, target: self, selector: Selector(self.timedOut(sender)), userInfo: nil  , repeats: false)
             let post = PFObject(className: "ContentProfile")
             post["caption"] = contentProfile.caption
-            let creator = contentProfile.creator//PFUser.currentUser()?.valueForKey("name")
+            let creator = contentProfile.creator
             post["creator"] = creator
             post["likes"] = contentProfile.likes
         
-    
             switch contentProfile.type {
             case .picture:
                 print("saving a picture profile")
                 let imageData = UIImageJPEGRepresentation(contentProfile.contentImage, 0.8)
                 let imageFile = PFFile(name: "image.jpeg", data: imageData!)
                 post["imageFile"] = imageFile
+                post["contentType"] = "picture"
             case .link:
-                print("saving a link profile")
+                print("saving a link profile \( contentProfile.link.absoluteString)")
+                post["contentType"] = "link"
+                post["link"] = contentProfile.link.absoluteString
+
             case .nothing:
                 print("saving a profile marked as nothing")
-                
             }
-            post["contentType"] = "picture"
+        
             post.saveInBackgroundWithBlock { (success, error) in
             sender.stopActivityIndicator()
+            self.timeOutTimer.invalidate()
             if success {
                 print("post successful")
                 print("saved \(post.objectId!) to \(PFUser.currentUser()?.objectId!)")
                 PFUser.currentUser()?.addUniqueObjectsFromArray([post.objectId!], forKey: "usersPosts")
                 PFUser.currentUser()?.saveInBackground()
-                //                do{ try PFUser.currentUser()?.save() } catch { print("problem with  choosen saving") }
-                
+                sender.performSegueWithIdentifier("addCategoriesSegue", sender: self)
                 sender.displayAlert("Content Posted!", message: "Your content has been successfully posted")
-                sender.performSegueWithIdentifier("unwindToMainScreen", sender: self)
-                
             } else {
+                print("post unsuccessful")
                 sender.displayAlert("Could not post content", message: "Please try again")
-                
             }
         }
+    }
+    func timedOut(sender:ParseViewController){
+        sender.stopActivityIndicator()
+        sender.displayAlert("Could not post content", message: "Please try again")
+        //Need to figure out how to stop saving in background or it could keep going
+
     }
     //MARK liked profiles functions
     func updateLikedPosts()-> [ContentProfile]{
@@ -205,6 +216,7 @@ class ContentManager{
         switch object["contentType"] as! String {
         case contentType.link.rawValue:
             print("post is link")
+            newProfile = self.createLinkProfileFromObject(object)
         case contentType.picture.rawValue:
             print("post is image")
             newProfile = self.createImageProfileFromObject(object)
@@ -214,8 +226,29 @@ class ContentManager{
         return newProfile
 
     }
+    /** 
+     Creates a link profile
+    */
+    func createLinkProfileFromObject(object:PFObject) -> ContentProfile{
+        let newProfile = ContentProfile(type: .link)
+        if object["caption"] != nil {
+            newProfile.caption = object["caption"] as! String
+        } else { print("no caption")}
+        if object["creator"] != nil {
+            newProfile.creator = object["creator"] as! String
+        } else { print("no creator") }
+        newProfile.objectId = object.objectId!
+        if object["likes"] != nil {
+            newProfile.likes = object["likes"] as! [String] //Possible error as it is just and array in Parse
+        } else { print( "no likes") }
+        if object["link"] != nil {
+            let urlString = object["link"] as! String
+            newProfile.link = NSURL(string: urlString)! //Possible error as it is just and array in Parse
+        } else { print( "no link") }
+        return newProfile
+    }
     /**
-     uploads a profiles image
+     uploads an image profile
     */
     func createImageProfileFromObject(object:PFObject) -> ContentProfile{
         let newProfile = ContentProfile(type: contentType.picture)

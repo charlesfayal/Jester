@@ -21,6 +21,7 @@ import ParseFacebookUtilsV4
 
 var contentManager:ContentManager!
 var persistenceManager:PersistenceManager!
+var accountManager: AccountManager!
 
 
 @UIApplicationMain
@@ -35,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         contentManager = ContentManager.sharedInstance
         persistenceManager = PersistenceManager.sharedInstance
+        accountManager = AccountManager.sharedInstance
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()

@@ -1,14 +1,14 @@
 //
-//  CategoriesTableViewCell.swift
+//  AddCategoriesTableViewCell.swift
 //  Jester
 //
-//  Created by Charles Fayal on 6/30/16.
+//  Created by Charles Fayal on 8/11/16.
 //  Copyright © 2016 Charles Fayal. All rights reserved.
 //
 
 import UIKit
 
-class CategoriesTableViewCell: UITableViewCell {
+class AddCategoriesTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var selectOutlet: UIButton!
     
@@ -30,7 +30,7 @@ class CategoriesTableViewCell: UITableViewCell {
                 print("didnt exist")
             }
         }
-    
+        
     }
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +39,5 @@ class CategoriesTableViewCell: UITableViewCell {
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        }
-
-
+    }
 }

@@ -41,7 +41,6 @@ class ContentProfile {
     func setImage(image: UIImage){
         contentImage = image
         if swipeView != nil {
-            
             swipeView.update()
             print("\(self.objectId) - image added and view updated")
         } else {
@@ -57,17 +56,17 @@ class ContentProfile {
         return swipeView
     }
     func createSwipeView(swipeScreen: MainScreenViewController) {
+        let swipeFrame = swipeScreen.profileView.frame
+
         if swipeView == nil {
             switch self.type {
             case .picture:
                 print("\(self.objectId) - creating image swipe view")
-
-                swipeView = SwipeView(frame: swipeScreen.profileView.frame, contentProfile: self)
-                swipeView.contentProfile = self
-                
+                swipeView = ImageSwipeView(frame: swipeFrame , contentProfile: self)
             case .link:
                 print("link type")
-                //contentView = LinkProfileView(frame: frame, contentProfile:self, swipeScreen: swipeScreen)
+                swipeView = LinkSwipeView(frame: swipeFrame , contentProfile: self)
+                
             case .nothing:
                 print("nothing as type")
             }

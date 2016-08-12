@@ -6,11 +6,10 @@
 //  Copyright © 2016 Charles Fayal. All rights reserved.
 //
 import UIKit
-@IBDesignable class ImageSwipeView: ContentView{
+@IBDesignable class ImageSwipeView: SwipeView{
 
-    var view:UIView!
     
-    var contentProfile:ContentProfile!
+    
     @IBOutlet weak var caption: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -31,15 +30,21 @@ import UIKit
     {
         super.init(coder: aDecoder)!
         print("initialzied from coder?")
+        setup()
     }
-
-     init(frame: CGRect, contentProfile:ContentProfile){
-        super.init(frame: frame)
+    override init(frame: CGRect) {
+        super.init(frame:frame)
+        setup()
+    }
+     override init(frame: CGRect, contentProfile:ContentProfile){
+        super.init(frame: frame, contentProfile:contentProfile)
         self.contentProfile = contentProfile
+        print("initialzied from frame, contentprofile")
         setup()
         update()
     }
-     override func update(){
+    override func update(){
+        super.update()
         imageView.image = contentProfile.contentImage
         caption.text = contentProfile.caption
 
@@ -47,11 +52,12 @@ import UIKit
     func setup()
     {
         //TODO issue with dragging and view changing due to changing sizes 
-        view = loadViewFromNib()
+        self.view = loadViewFromNib()
         view.frame = bounds
-        view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        addSubview(view)
-
+        print("views frame \(view.frame)")
+        //view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        super.Setup()
+        self.addSubview(view)
     }
     
     /**
@@ -63,7 +69,6 @@ import UIKit
         let bundle = NSBundle(forClass:self.dynamicType)
         let nib = UINib(nibName: "ImageSwipeView", bundle: bundle)
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
-        
         return view
     }
 }

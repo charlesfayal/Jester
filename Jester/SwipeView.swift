@@ -14,14 +14,11 @@ import Foundation
  This is the parent class to all the swipe screens. This class creates the swipe box, its buttons, adds username, likes for the post etc..
  Children profile add all of the content that should go in the contentView
  */
-@IBDesignable class SwipeView: ContentView{
-    var superView:UIView!
-
-    var swipeScreen: MainScreenViewController!
-
-    var contentProfile:ContentProfile!
+@IBDesignable class SwipeView: UIView{
     
-    var childView:ContentView!
+    //view that is used to put the profile in
+    var view:UIView!
+    var contentProfile:ContentProfile!
     
     @IBOutlet weak var contentView: UIView!
     
@@ -33,17 +30,16 @@ import Foundation
     @IBOutlet weak var username: UILabel!
 
     @IBAction func commentAction(sender: AnyObject) {
+        
     }
     
     @IBAction func shareAction(sender: AnyObject) {
     }
     @IBAction func likeAction(sender: AnyObject) {
-        if self.liked {
-            //unliking
+        if self.liked { //unliking
             likeButton.setImage(UIImage(named:"unlikedStar"),forState: .Normal)
             viewDisliked()
-        } else {
-            //liking
+        } else { //liking
             likeButton.setImage(UIImage(named:"likedStar") , forState: .Normal)
             viewLiked()
         }
@@ -52,7 +48,6 @@ import Foundation
     //Necessary variables
     var creator:String!
     var liked:Bool = false
-    
     var objectId: String!
 
     required init?(coder aDecoder: NSCoder) {
@@ -60,37 +55,31 @@ import Foundation
         print("error with initializing SwipeView")
        // Setup()
     }
-    init(frame: CGRect, contentProfile: ContentProfile){
+    override init(frame: CGRect){
         super.init(frame:frame)
-        self.contentProfile = contentProfile
-        Setup()
+        print("init with frame only")
+   //     Setup()
     }
+    init(frame: CGRect, contentProfile: ContentProfile){
+        super.init(frame: frame)
+        self.contentProfile = contentProfile
+    }
+
+    //must be done after the view is created
     func Setup() {
         //Create the swipe view border and rounded corners
-        self.backgroundColor = UIColor.whiteColor()
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.lightGrayColor().CGColor
-        self.layer.cornerRadius = 10
-        self.clipsToBounds = true //clips anything that would go past rounded edges
-
+        self.autoresizesSubviews = false
+        view.backgroundColor = UIColor.whiteColor()
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.lightGrayColor().CGColor
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true //clips anything that would go past rounded edges
         self.userInteractionEnabled = true
-        
-        //TODO issue with dragging and view changing due to changing sizes
-        superView = loadViewFromNib()
-        superView.frame = bounds
-        superView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        addSubview(superView)
-        //adds the view to the swipe views
-
-         childView = ImageSwipeView(frame: self.contentView.frame, contentProfile: self.contentProfile)
-        contentView.addSubview(childView)
-        
     }
-    override func update(){
+     func update(){
         username.text = contentProfile.creator
         likesLabel.text = "\(contentProfile.likes.count)"
         liked = contentProfile.liked
-        childView.update()
         
     }
     
@@ -103,12 +92,5 @@ import Foundation
         contentManager.profileDisliked(self.contentProfile)
     }
 
-    func loadViewFromNib() -> UIView
-    {
-        let bundle = NSBundle(forClass:self.dynamicType)
-        let nib = UINib(nibName: "SwipeView", bundle: bundle)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
-        
-        return view
-    }
+
 }

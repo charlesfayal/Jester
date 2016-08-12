@@ -24,7 +24,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func settingsButton(sender: AnyObject) {
         //TODO add settings like logout
     }
-    
+    @IBAction func unwindToProfile(segue: UIStoryboardSegue){
+        
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usersPosts.count
     }

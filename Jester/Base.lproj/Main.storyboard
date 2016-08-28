@@ -489,8 +489,8 @@
                                     <constraint firstItem="Ou9-z3-gGm" firstAttribute="centerY" secondItem="Ixl-YW-bFT" secondAttribute="centerY" constant="5" id="tfP-wg-8dj"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Rd-5d-ty2" customClass="ImageSwipeView" customModule="Jester" customModuleProvider="target">
-                                <rect key="frame" x="1" y="76" width="373" height="590"/>
+                            <view contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Rd-5d-ty2" customClass="ImageSwipeView" customModule="Jester" customModuleProvider="target">
+                                <rect key="frame" x="1" y="77" width="373" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>

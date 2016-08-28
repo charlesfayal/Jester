@@ -8,11 +8,8 @@
 import UIKit
 @IBDesignable class ImageSwipeView: SwipeView{
 
-    
-    
     @IBOutlet weak var caption: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    
 
     //This makes it editbable in the storyboard, worth doing for all of them?
     @IBInspectable
@@ -47,15 +44,24 @@ import UIKit
         super.update()
         imageView.image = contentProfile.contentImage
         caption.text = contentProfile.caption
-        caption.sizeToFit()
-        let height = caption.frame.height
-        caption.frame = CGRectMake(5, contentView.frame.height - height, contentView.frame.width, height)
-        imageView.frame = CGRectMake(0, 0, contentView.frame.height, contentView.frame.height - height)
+        print("caption text: \(contentProfile.caption)")
+        if contentProfile.caption == "" {
+            imageView.frame = CGRectMake(0, 0, contentView.frame.width, contentView.frame.height)
+            caption.hidden = true
+        } else {
+            print("caption height \(caption.frame.height)")
+            caption.sizeToFit()
+            let height = caption.frame.height
+            caption.frame = CGRectMake(5, contentView.frame.height - height, contentView.frame.width, height)
+            imageView.frame = CGRectMake(0, 0, contentView.frame.height, contentView.frame.height - height)
+            imageView.updateConstraints()
+            print("caption height after adjusting size \(height)")
+        }
+  
 
     }
-
     
-
+    
     func setup()
     {
         //TODO issue with dragging and view changing due to changing sizes 
@@ -65,6 +71,9 @@ import UIKit
         //view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         super.Setup()
         self.addSubview(view)
+
+        
+       // self.layer.cornerRadius = 10
     }
     
     /**

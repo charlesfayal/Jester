@@ -17,7 +17,6 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     var swipeGesture: UIPanGestureRecognizer!
     var tapGesture:UITapGestureRecognizer!
     //MARK IBOutlets
-    @IBOutlet weak var categoriesOutlet: UIButton!
     var originalCenter:CGPoint = CGPoint()
     
     var topProfile:ContentProfile!
@@ -33,10 +32,10 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     //reload content
     }
     @IBAction func postButton(sender: AnyObject) { }
-    @IBAction func categoriesButton(sender: AnyObject)
+    /*@IBAction func categoriesButton(sender: AnyObject)
     {
         self.performSegueWithIdentifier("toCategories", sender: self)
-    }
+    }*/
     @IBAction func likeButon(sender: AnyObject)
     {
     }
@@ -88,10 +87,10 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
          tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasTapped(_:)))
     
         //UI adjustments
-        let frame = categoriesOutlet.frame
+        /*let frame = categoriesOutlet.frame
         categoriesOutlet.frame = CGRectMake(frame.minX,frame.minY,self.view.frame.width / 2, frame.height)
         categoriesOutlet.layer.borderWidth = 1
-        categoriesOutlet.layer.borderColor = UIColor.lightGrayColor().CGColor
+        categoriesOutlet.layer.borderColor = UIColor.lightGrayColor().CGColor */
     }
 
     override func didReceiveMemoryWarning() {

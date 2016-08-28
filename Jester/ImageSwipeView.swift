@@ -39,7 +39,7 @@ import UIKit
      override init(frame: CGRect, contentProfile:ContentProfile){
         super.init(frame: frame, contentProfile:contentProfile)
         self.contentProfile = contentProfile
-        print("initialzied from frame, contentprofile")
+        print("initialzied from frame, contentProfile")
         setup()
         update()
     }
@@ -47,8 +47,15 @@ import UIKit
         super.update()
         imageView.image = contentProfile.contentImage
         caption.text = contentProfile.caption
+        caption.sizeToFit()
+        let height = caption.frame.height
+        caption.frame = CGRectMake(5, contentView.frame.height - height, contentView.frame.width, height)
+        imageView.frame = CGRectMake(0, 0, contentView.frame.height, contentView.frame.height - height)
 
     }
+
+    
+
     func setup()
     {
         //TODO issue with dragging and view changing due to changing sizes 

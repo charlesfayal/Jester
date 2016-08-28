@@ -45,7 +45,7 @@ import UIKit
         imageView.image = contentProfile.contentImage
         caption.text = contentProfile.caption
         print("caption text: \(contentProfile.caption)")
-        if contentProfile.caption == "" {
+        if contentProfile.caption.isEmpty{
             imageView.frame = CGRectMake(0, 0, contentView.frame.width, contentView.frame.height)
             caption.hidden = true
         } else {
@@ -54,11 +54,10 @@ import UIKit
             let height = caption.frame.height
             caption.frame = CGRectMake(5, contentView.frame.height - height, contentView.frame.width, height)
             imageView.frame = CGRectMake(0, 0, contentView.frame.height, contentView.frame.height - height)
-            imageView.updateConstraints()
-            print("caption height after adjusting size \(height)")
+            //imageView.updateConstraints()
+            
+            print("caption height after adjusting size \(caption.frame.height)")
         }
-  
-
     }
     
     

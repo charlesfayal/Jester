@@ -49,10 +49,13 @@ class ContentProfile {
         }
     }
     func getSwipeView(swipeScreen: MainScreenViewController)->SwipeView{
+        
         if swipeView == nil {
             print("\(self.objectId) - creating swipe view")
             createSwipeView(swipeScreen)
         }
+        swipeView.frame = swipeScreen.profileView.frame
+        swipeView.update()
         return swipeView
     }
     func createSwipeView(swipeScreen: MainScreenViewController) {

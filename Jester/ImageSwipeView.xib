@@ -10,6 +10,7 @@
                 <outlet property="caption" destination="rqW-a5-L3B" id="Pjm-VR-aof"/>
                 <outlet property="commentButton" destination="6rk-3y-HkD" id="dJ8-xE-5pb"/>
                 <outlet property="contentView" destination="h3i-4T-kSy" id="Wos-Zw-ExF"/>
+                <outlet property="heightConstraint" destination="yZ0-6F-fFb" id="9Zn-27-xAf"/>
                 <outlet property="imageView" destination="trQ-Hd-vX1" id="2wf-zK-BbV"/>
                 <outlet property="likeButton" destination="ae2-9n-EXy" id="bf4-nH-odu"/>
                 <outlet property="likesLabel" destination="MC6-WK-PxB" id="ZiG-6N-Bca"/>
@@ -61,7 +62,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="54" id="enP-WN-wHO"/>
+                        <constraint firstAttribute="height" constant="54" id="n4n-QR-UYd"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -69,34 +70,46 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3i-4T-kSy">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3i-4T-kSy">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="613"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is a picture with a sail in it, isnt that so neat" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqW-a5-L3B">
-                            <rect key="frame" x="5" y="594" width="365" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a picture with a sail in it. I have no fucking idea why this is working as it should" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqW-a5-L3B">
+                            <rect key="frame" x="5" y="554" width="365" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="yZ0-6F-fFb"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.34368990379999997" green="0.34368990379999997" blue="0.34368990379999997" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Default Image" translatesAutoresizingMaskIntoConstraints="NO" id="trQ-Hd-vX1">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="535"/>
+                        <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default Image" translatesAutoresizingMaskIntoConstraints="NO" id="trQ-Hd-vX1">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
                             <accessibility key="accessibilityConfiguration">
                                 <accessibilityTraits key="traits" image="YES" adjustable="YES"/>
                             </accessibility>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="rqW-a5-L3B" firstAttribute="top" secondItem="trQ-Hd-vX1" secondAttribute="bottom" constant="5" id="D1s-Zj-Gbc"/>
+                        <constraint firstAttribute="trailing" secondItem="rqW-a5-L3B" secondAttribute="trailing" constant="5" id="Do7-KF-HxC"/>
+                        <constraint firstItem="trQ-Hd-vX1" firstAttribute="top" secondItem="h3i-4T-kSy" secondAttribute="top" id="P21-hZ-NP2"/>
+                        <constraint firstAttribute="bottom" secondItem="rqW-a5-L3B" secondAttribute="bottom" constant="-1" id="a87-EF-ERE"/>
+                        <constraint firstAttribute="trailing" secondItem="trQ-Hd-vX1" secondAttribute="trailing" id="aoS-Ng-J5B"/>
+                        <constraint firstItem="rqW-a5-L3B" firstAttribute="leading" secondItem="h3i-4T-kSy" secondAttribute="leading" constant="5" id="cUS-ip-ArW"/>
+                        <constraint firstItem="trQ-Hd-vX1" firstAttribute="leading" secondItem="h3i-4T-kSy" secondAttribute="leading" id="mnd-eG-rRK"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="g14-fW-Ubh" firstAttribute="top" secondItem="h3i-4T-kSy" secondAttribute="bottom" id="3od-fe-Y7I"/>
-                <constraint firstAttribute="trailing" secondItem="g14-fW-Ubh" secondAttribute="trailing" constant="-1" id="4kD-g1-yXS"/>
-                <constraint firstItem="g14-fW-Ubh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-1" id="Qi4-1s-KvW"/>
-                <constraint firstAttribute="bottom" secondItem="g14-fW-Ubh" secondAttribute="bottom" id="TdU-Z0-IhN"/>
-                <constraint firstAttribute="trailing" secondItem="h3i-4T-kSy" secondAttribute="trailing" id="Ztk-68-RVa"/>
-                <constraint firstItem="h3i-4T-kSy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="a1R-aS-5vS"/>
-                <constraint firstItem="h3i-4T-kSy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="tXQ-uE-EBD"/>
+                <constraint firstAttribute="bottom" secondItem="g14-fW-Ubh" secondAttribute="bottom" id="Hek-QQ-ajN"/>
+                <constraint firstItem="g14-fW-Ubh" firstAttribute="top" secondItem="h3i-4T-kSy" secondAttribute="bottom" id="Ktc-I9-gJc"/>
+                <constraint firstAttribute="trailing" secondItem="g14-fW-Ubh" secondAttribute="trailing" constant="-1" id="Sd5-GV-Pcu"/>
+                <constraint firstItem="g14-fW-Ubh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-1" id="WJE-fw-i7v"/>
+                <constraint firstItem="h3i-4T-kSy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ejA-r8-4q0"/>
+                <constraint firstAttribute="trailing" secondItem="h3i-4T-kSy" secondAttribute="trailing" id="mk6-xd-svW"/>
+                <constraint firstItem="h3i-4T-kSy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pIA-pm-pxZ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

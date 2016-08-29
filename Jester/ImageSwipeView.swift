@@ -10,7 +10,7 @@ import UIKit
 
     @IBOutlet weak var caption: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-
+    
     //This makes it editbable in the storyboard, worth doing for all of them?
     @IBInspectable
     var myCaptionText: String? {
@@ -40,24 +40,13 @@ import UIKit
         setup()
         update()
     }
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     override func update(){
         super.update()
         imageView.image = contentProfile.contentImage
         caption.text = contentProfile.caption
-        print("caption text: \(contentProfile.caption)")
-        if contentProfile.caption.isEmpty{
-            imageView.frame = CGRectMake(0, 0, contentView.frame.width, contentView.frame.height)
-            caption.hidden = true
-        } else {
-            print("caption height \(caption.frame.height)")
-            caption.sizeToFit()
-            let height = caption.frame.height
-            caption.frame = CGRectMake(5, contentView.frame.height - height, contentView.frame.width, height)
-            imageView.frame = CGRectMake(0, 0, contentView.frame.height, contentView.frame.height - height)
-            //imageView.updateConstraints()
-            
-            print("caption height after adjusting size \(caption.frame.height)")
-        }
+        caption.sizeToFit()
+        heightConstraint.constant = caption.frame.height
     }
     
     
@@ -67,7 +56,7 @@ import UIKit
         self.view = loadViewFromNib()
         view.frame = bounds
         print("views frame \(view.frame)")
-        //view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         super.Setup()
         self.addSubview(view)
 

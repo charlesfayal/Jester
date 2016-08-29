@@ -49,8 +49,8 @@ class CreatePostViewController: ParseViewController, UITextFieldDelegate{
         print(segueIdentifier)
         if segueIdentifier == "addCategoriesSegue" {
             print("Segueing to add categories VC")
-            let destinationVC = segue.destinationViewController as! AddCategoriesViewController
-            destinationVC.newContentProfile = self.newContentProfile
+           // let destinationVC = segue.destinationViewController as! AddCategoriesViewController
+            //destinationVC.newContentProfile = self.newContentProfile
         }
     }
 }

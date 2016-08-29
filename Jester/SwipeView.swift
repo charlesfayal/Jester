@@ -80,7 +80,6 @@ import Foundation
         username.text = contentProfile.creator
         likesLabel.text = "\(contentProfile.likes.count)"
         liked = contentProfile.liked
-        
     }
     
     func viewLiked(){

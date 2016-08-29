@@ -58,6 +58,8 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         topProfile = profile
         topView = topProfile.getSwipeView(self) as SwipeView
+        //topView.update()
+        
         self.addSwipeGesture(topView)
         self.addTapGesture(topView.contentView)
         self.view.addSubview(topView)
@@ -85,12 +87,7 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
         // Gestures
          swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasDragged(_:)))
          tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainScreenViewController.wasTapped(_:)))
-    
-        //UI adjustments
-        /*let frame = categoriesOutlet.frame
-        categoriesOutlet.frame = CGRectMake(frame.minX,frame.minY,self.view.frame.width / 2, frame.height)
-        categoriesOutlet.layer.borderWidth = 1
-        categoriesOutlet.layer.borderColor = UIColor.lightGrayColor().CGColor */
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,7 +108,6 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     {
         let translation = gesture.translationInView(self.view)
         let view = gesture.view!
-        print("\(view.subviews.first?.frame)")
         view.center = CGPoint(x: profileView.center.x + translation.x, y: self.profileView.center.y + translation.y) // relative to bottom left of screen
         let xFromCenter = view.center.x - self.view.bounds.width/2
         let scale = 300 / (abs(xFromCenter) + 300 )

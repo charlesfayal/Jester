@@ -40,7 +40,9 @@ class AddCategoriesViewController:ParseViewController , UITableViewDelegate, UIT
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        print("touched")
+    }
     /*
     // MARK: - Navigation
 

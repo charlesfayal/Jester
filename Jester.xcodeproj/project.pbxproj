@@ -191,8 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				56357DA41D0FBD3900AD10B7 /* LaunchScreen.storyboard */,
-				56357D9F1D0FBD3900AD10B7 /* Main.storyboard */,
 				563271CE1D25832200790830 /* SwipeView.swift */,
+				56357D9F1D0FBD3900AD10B7 /* Main.storyboard */,
 				569AF8461D48811000C6F774 /* ImageSwipeView.swift */,
 				569AF8481D4881EA00C6F774 /* LinkSwipeView.swift */,
 				563EDA7C1D4073A900FCD2BE /* TableViewCell */,
@@ -325,7 +325,7 @@
 				TargetAttributes = {
 					56357D951D0FBD3900AD10B7 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = T4B85P4F7X;
+						DevelopmentTeam = Y436CAXHW3;
 					};
 				};
 			};

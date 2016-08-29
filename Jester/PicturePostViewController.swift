@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class PicturePostViewController: CreatePostViewController {
+class PicturePostViewController: CreatePostViewController , UITextViewDelegate{
     
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var captionText: UITextView!
@@ -21,7 +21,6 @@ class PicturePostViewController: CreatePostViewController {
             displayAlert("No description", message: "Please add a description")
             return false
         } else {
-           self.startActivityIndicator()
             newContentProfile = ContentProfile(type: .picture)
             newContentProfile.caption = captionText.text
             newContentProfile.creator = PFUser.currentUser()?.valueForKey("name") as! String
@@ -31,11 +30,19 @@ class PicturePostViewController: CreatePostViewController {
 
     }
     
+ 
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if selectedImage  != nil {
             postImage!.image = selectedImage
         } else { print("selected image is nil")}
+        captionText.delegate = self
     }
 
     override func didReceiveMemoryWarning() {

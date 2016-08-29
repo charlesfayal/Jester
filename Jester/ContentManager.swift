@@ -132,9 +132,12 @@ class ContentManager{
             }
         }
     }
+    
+    //TODO this does not work yet
     func timedOut(sender:ParseViewController){
-        sender.stopActivityIndicator()
-        sender.displayAlert("Could not post content", message: "Please try again")
+        //sender.stopActivityIndicator()
+        //print("timed out")
+        //sender.displayAlert("Could not post content", message: "Please try again")
         //Need to figure out how to stop saving in background or it could keep going
 
     }

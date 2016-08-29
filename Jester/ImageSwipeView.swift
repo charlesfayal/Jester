@@ -6,7 +6,7 @@
 //  Copyright © 2016 Steven Graf & Charles Fayal. All rights reserved.
 //
 import UIKit
-@IBDesignable class ImageSwipeView: SwipeView{
+@IBDesignable class ImageSwipeView: SwipeView {
 
     @IBOutlet weak var caption: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -40,31 +40,19 @@ import UIKit
         setup()
         update()
     }
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     override func update(){
         super.update()
         imageView.image = contentProfile.contentImage
         caption.text = contentProfile.caption
-        print("caption text: \(contentProfile.caption)")
-        if contentProfile.caption == "" {
-            imageView.frame = CGRectMake(10, 78, 355, 579)
-            caption.hidden = true
-        } else {
-            print("caption height \(caption.frame.height)")
-            caption.sizeToFit()
-            let height = caption.frame.height
-            caption.frame = CGRectMake(5, contentView.frame.height - height, contentView.frame.width, height)
-            imageView.frame = CGRectMake(0, 0, contentView.frame.height, contentView.frame.height - height)
-            imageView.updateConstraints()
-            print("caption height after adjusting size \(height)")
-        }
-  
-
+        caption.sizeToFit()
+        heightConstraint.constant = caption.frame.height
+        
     }
     
     
     func setup()
     {
-        //TODO issue with dragging and view changing due to changing sizes 
         self.view = loadViewFromNib()
         view.frame = bounds
         print("views frame \(view.frame)")

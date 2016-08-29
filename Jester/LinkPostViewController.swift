@@ -53,7 +53,6 @@ class LinkPostViewController: CreatePostViewController {
             success = false
             return false
         } else {
-            self.startActivityIndicator()
             newContentProfile = ContentProfile(type: .link)
             if linkURL == nil {
                 let urlText = "http://www.\( urlInput.text!)"

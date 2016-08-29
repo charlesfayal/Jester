@@ -3,7 +3,7 @@
 //  Jester
 //
 //  Created by Charles Fayal on 7/26/16.
-//  Copyright © 2016 Charles Fayal. All rights reserved.
+//  Copyright © 2016 Steven Graf & Charles Fayal. All rights reserved.
 //
 import UIKit
 @IBDesignable class ImageSwipeView: SwipeView{
@@ -45,8 +45,26 @@ import UIKit
         super.update()
         imageView.image = contentProfile.contentImage
         caption.text = contentProfile.caption
+<<<<<<< HEAD
         caption.sizeToFit()
         heightConstraint.constant = caption.frame.height
+=======
+        print("caption text: \(contentProfile.caption)")
+        if contentProfile.caption == "" {
+            imageView.frame = CGRectMake(10, 78, 355, 579)
+            caption.hidden = true
+        } else {
+            print("caption height \(caption.frame.height)")
+            caption.sizeToFit()
+            let height = caption.frame.height
+            caption.frame = CGRectMake(5, contentView.frame.height - height, contentView.frame.width, height)
+            imageView.frame = CGRectMake(0, 0, contentView.frame.height, contentView.frame.height - height)
+            imageView.updateConstraints()
+            print("caption height after adjusting size \(height)")
+        }
+  
+
+>>>>>>> Screen-size-change
     }
     
     

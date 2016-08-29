@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Z0x-gl-5bt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Z0x-gl-5bt">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -449,27 +449,20 @@
                                 <rect key="frame" x="-4" y="0.0" width="387" height="75"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhx-Jw-cBW">
-                                        <rect key="frame" x="40" y="26" width="25" height="34"/>
+                                        <rect key="frame" x="40" y="25" width="20" height="35"/>
                                         <state key="normal" image="profileButton"/>
                                         <connections>
                                             <segue destination="eD4-Od-LcY" kind="show" id="gOf-wB-zkV"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LA0-b5-5VI">
-                                        <rect key="frame" x="312" y="26" width="35" height="34"/>
-                                        <state key="normal" image="likesButton"/>
-                                        <connections>
-                                            <segue destination="sRn-Dh-2gK" kind="show" id="bZX-GH-Tgz"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ou9-z3-gGm">
-                                        <rect key="frame" x="177" y="27" width="32" height="32"/>
+                                        <rect key="frame" x="315" y="25" width="32" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="D7S-Td-KtX"/>
                                             <constraint firstAttribute="height" constant="32" id="slk-lR-3Xj"/>
                                         </constraints>
                                         <color key="tintColor" red="0.79779647440000001" green="0.79779647440000001" blue="0.79779647440000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Button" image="uploadButton">
+                                        <state key="normal" image="uploadButton">
                                             <color key="titleShadowColor" red="0.50588235290000005" green="0.14901960780000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -477,41 +470,76 @@
                                             <segue destination="GDP-Gi-QIB" kind="show" id="bHe-ts-qhs"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swirl" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppV-Jn-Foa">
+                                        <rect key="frame" x="158" y="25" width="71" height="39"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="32"/>
+                                        <color key="textColor" red="0.1764705882352941" green="0.62745098039215685" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="jhx-Jw-cBW" firstAttribute="top" secondItem="Ixl-YW-bFT" secondAttribute="top" constant="25" id="06N-pI-8W6"/>
                                     <constraint firstItem="Ou9-z3-gGm" firstAttribute="centerX" secondItem="Ixl-YW-bFT" secondAttribute="centerX" id="9PI-yc-Ufl"/>
+                                    <constraint firstItem="Ou9-z3-gGm" firstAttribute="top" secondItem="Ixl-YW-bFT" secondAttribute="top" constant="25" id="I0v-8v-BsS"/>
+                                    <constraint firstItem="ppV-Jn-Foa" firstAttribute="centerX" secondItem="Ixl-YW-bFT" secondAttribute="centerX" id="Iao-i1-0f6"/>
                                     <constraint firstItem="jhx-Jw-cBW" firstAttribute="leading" secondItem="Ixl-YW-bFT" secondAttribute="leading" constant="40" id="Jpn-Vf-NhR"/>
                                     <constraint firstAttribute="height" constant="75" id="Tev-n5-Y1p"/>
-                                    <constraint firstAttribute="trailing" secondItem="LA0-b5-5VI" secondAttribute="trailing" constant="40" id="UlY-6Y-x5O"/>
+                                    <constraint firstItem="ppV-Jn-Foa" firstAttribute="top" secondItem="Ixl-YW-bFT" secondAttribute="top" constant="25" id="UjT-Ux-Kua"/>
                                     <constraint firstItem="jhx-Jw-cBW" firstAttribute="centerY" secondItem="Ixl-YW-bFT" secondAttribute="centerY" constant="5" id="euB-2W-3A0"/>
-                                    <constraint firstItem="LA0-b5-5VI" firstAttribute="centerY" secondItem="Ixl-YW-bFT" secondAttribute="centerY" constant="5" id="jbl-Yg-Yzk"/>
                                     <constraint firstItem="Ou9-z3-gGm" firstAttribute="centerY" secondItem="Ixl-YW-bFT" secondAttribute="centerY" constant="5" id="tfP-wg-8dj"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ou9-z3-gGm" secondAttribute="trailing" constant="40" id="yFB-Oe-RsG"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9PI-yc-Ufl"/>
+                                        <exclude reference="tfP-wg-8dj"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Rd-5d-ty2" customClass="ImageSwipeView" customModule="Jester" customModuleProvider="target">
-                                <rect key="frame" x="1" y="77" width="373" height="590"/>
+                                <rect key="frame" x="10" y="69" width="355" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="580" id="1OD-N4-tG0"/>
+                                    <constraint firstAttribute="width" constant="355" id="wVB-rZ-dST"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ly8-sD-dvb" firstAttribute="top" secondItem="7Rd-5d-ty2" secondAttribute="bottom" constant="1" id="8vn-lV-auJ"/>
                             <constraint firstItem="Ixl-YW-bFT" firstAttribute="top" secondItem="H3Q-VO-TLS" secondAttribute="topMargin" id="Brc-r3-N4o"/>
                             <constraint firstItem="7Rd-5d-ty2" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" id="GND-GV-0Dn"/>
-                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="top" secondItem="Ixl-YW-bFT" secondAttribute="bottom" constant="1" id="U1I-vg-SMz"/>
+                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="10" id="HAv-00-uHf"/>
+                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="top" secondItem="Ixl-YW-bFT" secondAttribute="bottom" constant="8" id="PoV-WN-rJd"/>
+                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="10" id="Ro0-Vg-ZD4"/>
+                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-10" id="Tbq-8K-mvS"/>
+                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="top" secondItem="Ixl-YW-bFT" secondAttribute="bottom" constant="8" id="Wag-Dz-JDs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ixl-YW-bFT" secondAttribute="trailing" constant="-24" id="Ylt-Oh-4NK"/>
                             <constraint firstItem="7Rd-5d-ty2" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-15" id="bUP-j8-P6P"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7Rd-5d-ty2" secondAttribute="trailing" id="bcV-4z-Cjc"/>
+                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-10" id="inB-VX-zKu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7Rd-5d-ty2" secondAttribute="trailing" constant="-15" id="jE0-p7-coT"/>
                             <constraint firstItem="Ixl-YW-bFT" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-20" id="lwM-rj-bcc"/>
                             <constraint firstItem="7Rd-5d-ty2" firstAttribute="top" secondItem="Ixl-YW-bFT" secondAttribute="bottom" constant="1" id="ne0-QO-dnW"/>
+                            <constraint firstItem="7Rd-5d-ty2" firstAttribute="leading" secondItem="H3Q-VO-TLS" secondAttribute="leadingMargin" constant="-10" id="u2J-eB-UVA"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="GND-GV-0Dn"/>
+                                <exclude reference="HAv-00-uHf"/>
+                                <exclude reference="Ro0-Vg-ZD4"/>
+                                <exclude reference="Tbq-8K-mvS"/>
+                                <exclude reference="Wag-Dz-JDs"/>
+                                <exclude reference="bUP-j8-P6P"/>
                                 <exclude reference="bcV-4z-Cjc"/>
+                                <exclude reference="jE0-p7-coT"/>
                                 <exclude reference="ne0-QO-dnW"/>
+                                <exclude reference="u2J-eB-UVA"/>
+                                <exclude reference="8vn-lV-auJ"/>
                             </mask>
                         </variation>
                     </view>
@@ -528,7 +556,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVB-qX-2wC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="444.5" y="-1083.5"/>
+            <point key="canvasLocation" x="432.5" y="-1313.5"/>
         </scene>
         <!--Comments-->
         <scene sceneID="g3y-js-jxJ">
@@ -1746,15 +1774,14 @@
         <image name="View Icon" width="112" height="79"/>
         <image name="commentButtonLarge" width="45" height="45"/>
         <image name="imageButton" width="80" height="80"/>
-        <image name="likesButton" width="35" height="34"/>
-        <image name="profileButton" width="25" height="34"/>
+        <image name="profileButton" width="20" height="29"/>
         <image name="shareButton" width="45" height="45"/>
         <image name="swirlLogoThin" width="222" height="172"/>
         <image name="swirlText" width="169" height="68"/>
         <image name="unlikedStar" width="29" height="30"/>
         <image name="unlikedStarLarge" width="51" height="52"/>
         <image name="unselectedBox" width="30" height="30"/>
-        <image name="uploadButton" width="34" height="34"/>
+        <image name="uploadButton" width="28" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Z2R-RI-aUl"/>

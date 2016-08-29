@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "fill176.pdf"
+      "filename" : "selectBar.pdf"
     }
   ],
   "info" : {
-    "author" : "zeplin",
-    "version" : "1"
+    "version" : 1,
+    "author" : "xcode"
   }
 }

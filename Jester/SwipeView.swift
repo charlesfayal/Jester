@@ -69,7 +69,9 @@ import Foundation
     func Setup() {
         //Create the swipe view border and rounded corners
         self.autoresizesSubviews = false
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor(red: 239, green: 239, blue: 244, alpha: 0.4)
+   
+
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.lightGrayColor().CGColor
         view.layer.cornerRadius = 10
@@ -91,6 +93,11 @@ import Foundation
         self.liked = false
         contentManager.profileDisliked(self.contentProfile)
     }
-
+    
+    //background color
+    
+    
+    
+    
 
 }

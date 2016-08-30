@@ -12,7 +12,7 @@ class CreatePostViewController: ParseViewController, UITextFieldDelegate{
     var newContentProfile:ContentProfile!
     
     //MARK: - Button Actions
-    @IBAction func returnButton(sender: AnyObject) {
+    @IBAction override func returnButton(sender: AnyObject) {
         self.performSegueWithIdentifier(
             "unwindToMainScreen", sender: self)
     }

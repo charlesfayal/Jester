@@ -57,7 +57,8 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
             topView.removeFromSuperview()
         }
         topProfile = profile
-        topView = topProfile.getSwipeView(self) as SwipeView
+        let newTopView = topProfile.getSwipeView(self) as SwipeView
+        topView = newTopView
         self.addSwipeGesture(topView)
         self.addTapGesture(topView.contentView)
         self.view.addSubview(topView)

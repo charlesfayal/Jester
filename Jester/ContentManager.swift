@@ -88,17 +88,21 @@ class ContentManager{
     
 
     }
-    //MARK - Category related functions
     
+
     //MARK - Saving data to Parse
     var timeOutTimer:NSTimer = NSTimer()
+    
+    
     func newPost(contentProfile: ContentProfile, sender: ParseViewController){
+            sender.startActivityIndicator()
             timeOutTimer = NSTimer.scheduledTimerWithTimeInterval(60 * 3, target: self, selector: Selector(self.timedOut(sender)), userInfo: nil  , repeats: false)
             let post = PFObject(className: "ContentProfile")
             post["caption"] = contentProfile.caption
             let creator = contentProfile.creator
             post["creator"] = creator
             post["likes"] = contentProfile.likes
+            post["categories"] = contentProfile.categories
         
             switch contentProfile.type {
             case .picture:
@@ -124,12 +128,13 @@ class ContentManager{
                 print("saved \(post.objectId!) to \(PFUser.currentUser()?.objectId!)")
                 PFUser.currentUser()?.addUniqueObjectsFromArray([post.objectId!], forKey: "usersPosts")
                 PFUser.currentUser()?.saveInBackground()
-                sender.performSegueWithIdentifier("addCategoriesSegue", sender: self)
                 sender.displayAlert("Content Posted!", message: "Your content has been successfully posted")
+                sender.returnButton(self)
             } else {
                 print("post unsuccessful")
                 sender.displayAlert("Could not post content", message: "Please try again")
             }
+          
         }
     }
     
@@ -185,8 +190,19 @@ class ContentManager{
     func getProfiles(){
         let profileQuery = PFQuery(className: "ContentProfile")
         profileQuery.whereKey("objectId", notContainedIn: seenProfiles)
-        profileQuery.limit = 4 - profilesOnDeck.count
-        performQueryForProfiles(profileQuery, arrayToAddTo: .profilesOnDeck)
+        let currentUser = PFUser.currentUser()
+        print(currentUser)
+        if let usersCategories  =  currentUser!["categories"] {
+            profileQuery.whereKey("categories", containedIn: usersCategories as! [String] )
+            profileQuery.limit = 4 - profilesOnDeck.count
+            performQueryForProfiles(profileQuery, arrayToAddTo: .profilesOnDeck)
+  
+        } else {
+            print("no users categories")
+            currentUser!["categories"] = ["Humor"]
+            currentUser?.saveInBackground()
+        }
+        
     }
     
     func performQueryForProfiles(query: PFQuery, arrayToAddTo:Arrays ){

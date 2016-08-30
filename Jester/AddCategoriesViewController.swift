@@ -17,8 +17,12 @@ class AddCategoriesViewController:ParseViewController , UITableViewDelegate, UIT
     @IBAction func postButton(sender: AnyObject) {
         contentManager.newPost(newContentProfile, sender: self)
     }
-    @IBAction func returnButton(sender: AnyObject) {
+    @IBAction override func returnButton(sender: AnyObject) {
         self.performSegueWithIdentifier("unwindToMainScreen", sender: self)
+    }
+    override func finishedPosting(){
+        self.performSegueWithIdentifier("unwindToMainScreen", sender: self)
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,8 +31,24 @@ class AddCategoriesViewController:ParseViewController , UITableViewDelegate, UIT
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:AddCategoriesTableViewCell = tableView.dequeueReusableCellWithIdentifier("addCategoriesCell") as! AddCategoriesTableViewCell
-        cell.categoryLabel.text  = categories[indexPath.row]
+        let category = categories[indexPath.row]
+        cell.addCategoriesViewController = self
+        cell.setCellCategory(category)
         return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+       let cell =  tableView.cellForRowAtIndexPath(indexPath) as! AddCategoriesTableViewCell
+        if cell.categorySelected {
+            newContentProfile.addCategory(cell.category)
+        } else {
+           newContentProfile.removeCategory(cell.category)
+        }
+    }
+    func addCategory(category:String){
+        newContentProfile.addCategory(category)
+    }
+    func removeCategory(category:String){
+        newContentProfile.removeCategory(category)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

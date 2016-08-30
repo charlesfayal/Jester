@@ -22,6 +22,7 @@ class ContentProfile {
     var caption:String = ""
     var creator:String = ""
     var likes = [String]()
+    var categories = [String]()
     /*weak*/ var swipeView:SwipeView!
     
     var liked:Bool = false
@@ -38,6 +39,26 @@ class ContentProfile {
     init(type:contentType){
         self.type = type
     }
+    //MARK - Category related functions
+    func addCategory(category: String){
+        if categories.contains(category) {
+            print("category already in content profile")
+        } else {
+            print("adding category\(category) to profile")
+            categories.append(category)
+        }
+    }
+    
+    func removeCategory(category:String){
+        if categories.contains(category){
+            print("removing category \(category) to profile")
+            let index = self.categories.indexOf(category)
+            categories.removeAtIndex(index!)
+        } else {
+            print("cannot remove category, not in cateogires array ")
+        }
+    }
+    
     func setImage(image: UIImage){
         contentImage = image
         if swipeView != nil {
@@ -52,6 +73,9 @@ class ContentProfile {
         if swipeView == nil {
             print("\(self.objectId) - creating swipe view")
             createSwipeView(swipeScreen)
+        } else {
+            print("\(self.objectId) - swipe view already created")
+
         }
         return swipeView
     }

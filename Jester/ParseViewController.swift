@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 class ParseViewController: UIViewController {
     var activityIndicator: UIActivityIndicatorView!  = UIActivityIndicatorView()
+    @IBAction func returnButton(sender: AnyObject) {
+    }
+    func finishedPosting(){
+        
+    }
     func startActivityIndicator(){
         activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
         activityIndicator.backgroundColor = UIColor(white: 1.0, alpha: 0.5)

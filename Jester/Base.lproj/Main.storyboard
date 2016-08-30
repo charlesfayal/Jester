@@ -499,7 +499,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Rd-5d-ty2" customClass="ImageSwipeView" customModule="Jester" customModuleProvider="target">
-                                <rect key="frame" x="10" y="69" width="355" height="580"/>
+                                <rect key="frame" x="10" y="83" width="355" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="580" id="1OD-N4-tG0"/>

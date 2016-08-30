@@ -62,49 +62,82 @@
                 <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g14-fW-Ubh">
                     <rect key="frame" x="-1" y="613" width="377" height="54"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rk-3y-HkD">
-                            <rect key="frame" x="212" y="14" width="30" height="27"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rk-3y-HkD">
+                            <rect key="frame" x="217" y="13" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="fMu-Kp-DUk"/>
+                                <constraint firstAttribute="height" constant="30" id="p9z-hd-WOW"/>
+                            </constraints>
                             <state key="normal" title="Button" image="commentButton"/>
                             <connections>
                                 <action selector="commentAction:" destination="-1" eventType="touchUpInside" id="Pq5-OR-ymE"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MC6-WK-PxB">
-                            <rect key="frame" x="322" y="17" width="50" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7P-Li-Drq">
-                            <rect key="frame" x="247" y="14" width="30" height="27"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7P-Li-Drq">
+                            <rect key="frame" x="252" y="13" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="01C-On-4hw"/>
+                                <constraint firstAttribute="width" constant="30" id="xgw-ZZ-Glq"/>
+                            </constraints>
                             <state key="normal" title="Button" image="shareButton"/>
                             <connections>
                                 <action selector="shareAction:" destination="-1" eventType="touchUpInside" id="vko-ri-pvK"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AC7-27-Nig">
-                            <rect key="frame" x="5" y="17" width="79" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AC7-27-Nig">
+                            <rect key="frame" x="5" y="17" width="207" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae2-9n-EXy">
-                            <rect key="frame" x="284" y="14" width="30" height="27"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae2-9n-EXy">
+                            <rect key="frame" x="287" y="13" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="4qA-yJ-RmE"/>
+                                <constraint firstAttribute="width" constant="30" id="IQL-YH-NCD"/>
+                            </constraints>
                             <state key="normal" title="Button" image="unlikedStar"/>
                             <connections>
                                 <action selector="likeAction:" destination="-1" eventType="touchUpInside" id="kkD-8J-Pdg"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MC6-WK-PxB">
+                            <rect key="frame" x="322" y="17" width="50" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="2ci-mp-8iJ"/>
+                                <constraint firstAttribute="width" constant="50" id="n6N-Hw-rzr"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="AC7-27-Nig" firstAttribute="centerY" secondItem="6rk-3y-HkD" secondAttribute="centerY" id="704-tr-maB"/>
+                        <constraint firstItem="MC6-WK-PxB" firstAttribute="centerY" secondItem="g14-fW-Ubh" secondAttribute="centerY" id="7Vq-m4-bYn"/>
+                        <constraint firstItem="6rk-3y-HkD" firstAttribute="leading" secondItem="AC7-27-Nig" secondAttribute="trailing" constant="5" id="Byl-fu-hEE"/>
+                        <constraint firstItem="L7P-Li-Drq" firstAttribute="centerY" secondItem="ae2-9n-EXy" secondAttribute="centerY" id="GU1-dH-zs2"/>
+                        <constraint firstItem="L7P-Li-Drq" firstAttribute="leading" secondItem="6rk-3y-HkD" secondAttribute="trailing" constant="5" id="JnT-Tr-Qoj"/>
+                        <constraint firstItem="AC7-27-Nig" firstAttribute="leading" secondItem="g14-fW-Ubh" secondAttribute="leading" constant="5" id="SED-XW-dYa"/>
+                        <constraint firstItem="ae2-9n-EXy" firstAttribute="centerY" secondItem="MC6-WK-PxB" secondAttribute="centerY" id="Wgo-wV-lNl"/>
+                        <constraint firstAttribute="trailing" secondItem="MC6-WK-PxB" secondAttribute="trailing" constant="5" id="aM6-qc-CeT"/>
                         <constraint firstAttribute="height" constant="54" id="enP-WN-wHO"/>
+                        <constraint firstItem="ae2-9n-EXy" firstAttribute="leading" secondItem="L7P-Li-Drq" secondAttribute="trailing" constant="5" id="rHl-3K-YzF"/>
+                        <constraint firstItem="6rk-3y-HkD" firstAttribute="centerY" secondItem="L7P-Li-Drq" secondAttribute="centerY" id="t5X-Cs-Pba"/>
+                        <constraint firstItem="MC6-WK-PxB" firstAttribute="centerY" secondItem="g14-fW-Ubh" secondAttribute="centerY" id="ulM-9E-osK"/>
+                        <constraint firstItem="MC6-WK-PxB" firstAttribute="leading" secondItem="ae2-9n-EXy" secondAttribute="trailing" constant="5" id="zkW-Yk-OUM"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                             <integer key="value" value="0"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ulM-9E-osK"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

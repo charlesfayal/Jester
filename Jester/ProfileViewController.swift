@@ -11,7 +11,6 @@ import Parse
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var usersPosts = [ContentProfile]() //should go into persistence manager
     
     @IBOutlet weak var tortalLikesLabel: UILabel!
     @IBOutlet weak var totalViewsLabel: UILabel!
@@ -19,38 +18,44 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func returnButton(sender: AnyObject) {
-        self.performSegueWithIdentifier("unwindToMainScreen", sender: self)
+        //segues back to main screen
     }
+    
     @IBAction func settingsButton(sender: AnyObject) {
         //TODO add settings like logout
     }
+    
     @IBAction func unwindToProfile(segue: UIStoryboardSegue){
         
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usersPosts.count
+        return contentManager.usersPosts.count
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:ProfileTableViewCell = tableView.dequeueReusableCellWithIdentifier("profileCell") as! ProfileTableViewCell
-        let cellProfile = usersPosts[indexPath.row]
+        let cellProfile = Array(contentManager.usersPosts.values)[indexPath.row]
         if let image = cellProfile.contentImage {
             cell.postImage.image = image
-        } else {
-            cell.postImage.image = UIImage(named: "Default Image")
-        }
+        } else { print("\(cellProfile.objectId) has no image")}
         cell.caption.text = cellProfile.caption
         return cell
     }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat           {
         return 60
     }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("selected with row: \(indexPath.row)")
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Number of users posts \(contentManager.usersPosts.count)")
         usernameLabel.text = PFUser.currentUser()?.valueForKey("name")  as? String
-        usersPosts = contentManager.updateUsersPosts()
+        contentManager.updateUsersPosts()
         
         //Replacing the profile title with an image
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))

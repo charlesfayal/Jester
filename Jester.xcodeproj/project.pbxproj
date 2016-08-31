@@ -57,6 +57,7 @@
 		569AF8491D4881EA00C6F774 /* LinkSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569AF8481D4881EA00C6F774 /* LinkSwipeView.swift */; };
 		569AF84D1D4A0BF900C6F774 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569AF84C1D4A0BF900C6F774 /* AccountManager.swift */; };
 		569CA95B1D5D757A00846DD8 /* AddCategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569CA95A1D5D757A00846DD8 /* AddCategoriesTableViewCell.swift */; };
+		569EDB351D762F0200C743E8 /* UserCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EDB341D762F0200C743E8 /* UserCategoriesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		569AF8481D4881EA00C6F774 /* LinkSwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkSwipeView.swift; sourceTree = "<group>"; };
 		569AF84C1D4A0BF900C6F774 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		569CA95A1D5D757A00846DD8 /* AddCategoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCategoriesTableViewCell.swift; sourceTree = "<group>"; };
+		569EDB341D762F0200C743E8 /* UserCategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCategoriesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 				569AF8401D48571500C6F774 /* ParseViewController.swift */,
 				563EDA851D40784900FCD2BE /* Posting View Controllers  */,
 				563271D81D2C187600790830 /* ProfileViewController.swift */,
+				569EDB341D762F0200C743E8 /* UserCategoriesViewController.swift */,
 				5685C6381D5BA9D80061E6A0 /* SettingsViewController.swift */,
 				563271DA1D2C1D0400790830 /* ShareViewController.swift */,
 				563271D21D25C8E400790830 /* PictureInfoViewController.swift */,
@@ -396,6 +399,7 @@
 				56062A091D3D3817009C2ABB /* ProfileTableViewCell.swift in Sources */,
 				563271D31D25C8E400790830 /* PictureInfoViewController.swift in Sources */,
 				563271D51D25CB8700790830 /* CommentsTableViewCell.swift in Sources */,
+				569EDB351D762F0200C743E8 /* UserCategoriesViewController.swift in Sources */,
 				563271CF1D25832200790830 /* SwipeView.swift in Sources */,
 				563271C51D24910900790830 /* CategoriesViewController.swift in Sources */,
 				563271DF1D2C1F0400790830 /* PicturePostViewController.swift in Sources */,

@@ -112,7 +112,7 @@ class MainScreenViewController: UIViewController, UIGestureRecognizerDelegate {
     {
         let translation = gesture.translationInView(self.view)
         let view = gesture.view!
-        print("\(view.subviews.first?.frame)")
+        //print("\(view.subviews.first?.frame)")
         view.center = CGPoint(x: profileView.center.x + translation.x, y: self.profileView.center.y + translation.y) // relative to bottom left of screen
         let xFromCenter = view.center.x - self.view.bounds.width/2
         let scale = 300 / (abs(xFromCenter) + 300 )

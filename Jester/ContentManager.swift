@@ -22,7 +22,7 @@ class ContentManager{
         case likedPosts
     }
     var profilesOnDeck = [ContentProfile]()
-    var usersPosts = [ContentProfile]()
+    var usersPosts = [String: ContentProfile]()
     var likedPosts = [ContentProfile]()
     var seenProfiles = [String]()
 
@@ -144,8 +144,8 @@ class ContentManager{
         //print("timed out")
         //sender.displayAlert("Could not post content", message: "Please try again")
         //Need to figure out how to stop saving in background or it could keep going
-
     }
+    
     //MARK liked profiles functions
     func updateLikedPosts()-> [ContentProfile]{
         if PFUser.currentUser()?.objectForKey("liked") != nil {
@@ -159,21 +159,30 @@ class ContentManager{
         return likedPosts
 
     }
+    
     //MARK getting profiles functions
     /**
      returns an array of the profiles that the users has posted
     */
-    func updateUsersPosts()->[ContentProfile]{
+    func updateUsersPosts(){
         if PFUser.currentUser()?.objectForKey("usersPosts") != nil {
             let usersPostsObjectIds = PFUser.currentUser()?.objectForKey("usersPosts") as! [String]
-            print(usersPostsObjectIds)
+            print("UsersPostsObjectIds \(usersPostsObjectIds)")
             let profileQuery = PFQuery(className: "ContentProfile")
             profileQuery.whereKey("objectId", containedIn: usersPostsObjectIds)
             //profileQuery.whereKey("objectId", notContainedIn: ) posts we already have
             performQueryForProfiles(profileQuery, arrayToAddTo: .usersPosts)
         }
-        return usersPosts
     }
+    
+    func removeUsersPosts(){
+        //need to remove posts from pool
+        print("Removing users posts")
+        let currentUser = PFUser.currentUser()
+        currentUser?.removeObjectForKey("usersPosts")
+        currentUser?.saveInBackground()
+    }
+    
     /**
      Gets new profiles if needed for the main swipe screen
     */
@@ -191,18 +200,15 @@ class ContentManager{
         let profileQuery = PFQuery(className: "ContentProfile")
         profileQuery.whereKey("objectId", notContainedIn: seenProfiles)
         let currentUser = PFUser.currentUser()
-        print(currentUser)
-        if let usersCategories  =  currentUser!["categories"] {
+        if let usersCategories  =  currentUser?.objectForKey("categories"){
             profileQuery.whereKey("categories", containedIn: usersCategories as! [String] )
             profileQuery.limit = 4 - profilesOnDeck.count
             performQueryForProfiles(profileQuery, arrayToAddTo: .profilesOnDeck)
-  
-        } else {
+          } else {
             print("no users categories")
             currentUser!["categories"] = ["Humor"]
             currentUser?.saveInBackground()
         }
-        
     }
     
     func performQueryForProfiles(query: PFQuery, arrayToAddTo:Arrays ){
@@ -220,31 +226,31 @@ class ContentManager{
                     case .profilesOnDeck:
                             self.addToProfilesOnDeck(newProfile)
                     case .usersPosts:
-                            self.usersPosts.append(newProfile)
+                            self.usersPosts.updateValue(newProfile, forKey: newProfile.objectId) // inefficient?
                     case .likedPosts:
                             self.likedPosts.append(newProfile)
                     }
                 }
             }
         }
-
     }
+    
     func createProfileFromObject(object:PFObject)-> ContentProfile{
         //print(object)
         var newProfile = ContentProfile()
         switch object["contentType"] as! String {
         case contentType.link.rawValue:
-            print("post is link")
+            //print("post is link")
             newProfile = self.createLinkProfileFromObject(object)
         case contentType.picture.rawValue:
-            print("post is image")
+            //print("post is image")
             newProfile = self.createImageProfileFromObject(object)
         default:
             print("post content type was not specified")
         }
         return newProfile
-
     }
+    
     /** 
      Creates a link profile
     */
@@ -288,14 +294,14 @@ class ContentManager{
     }
     
     func uploadImageToProfile(profile:PFObject , contentProfile: ContentProfile)  {
-        print("getting profile's image")
+        //print("getting profile's image")
         if let imageFile = profile["imageFile"] {
             imageFile.getDataInBackgroundWithBlock({ (imageData, error) in
                 if error != nil {
                     print(error)
                 } else {
                     if let data = imageData {
-                        print("image loaded for \(contentProfile.objectId)")
+                        //print("image loaded for \(contentProfile.objectId)")
                         contentProfile.setImage(UIImage(data: data)! )                        
                     }
                 }
@@ -307,7 +313,7 @@ class ContentManager{
      creates a new profile view
      */
     func addToProfilesOnDeck(newProfile:ContentProfile){
-        print("adding profile \(newProfile.objectId) deck count : \( profilesOnDeck.count )")
+        //print("adding profile \(newProfile.objectId) deck count : \( profilesOnDeck.count )")
         if profilesOnDeck.isEmpty {
             swipeScreen.changeTopProfileView(newProfile)
             if topProfile == nil {

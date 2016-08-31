@@ -7,18 +7,21 @@
 //
 
 import UIKit
-
+protocol CategoriesTableViewController{
+    func removeCategory(category:String)
+    func addCategory(category:String)
+}
 class AddCategoriesTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var selectOutlet: UIButton!
-    var addCategoriesViewController:AddCategoriesViewController!
+    var tableViewController:CategoriesTableViewController!
     var category:String = ""
     var categorySelected = false
     @IBAction func selectButton(sender: AnyObject) {
         //Change button image from selected to unselected and vice versa
         if categorySelected {
             categorySelected = false
-            addCategoriesViewController.removeCategory(category)
+            tableViewController.removeCategory(category)
             if let image = UIImage(named: "unselectedBox"){
                 selectOutlet.setImage(image, forState: .Normal)
             } else {
@@ -26,7 +29,7 @@ class AddCategoriesTableViewCell: UITableViewCell {
             }
         } else {
             categorySelected = true
-            addCategoriesViewController.addCategory(category)
+            tableViewController.addCategory(category)
             if let image = UIImage(named: "selectedBox"){
                 selectOutlet.setImage(image, forState: .Normal)
             } else {

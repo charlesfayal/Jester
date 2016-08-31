@@ -10,6 +10,10 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBAction func removePosts(sender: AnyObject) {
+        contentManager.removeUsersPosts()
+        
+    }
     @IBAction func returnButton(sender: AnyObject) {
         self.performSegueWithIdentifier("unwindToProfile", sender: self)
     }

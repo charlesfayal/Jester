@@ -1,29 +1,23 @@
 //
-//  AddCategoriesViewController.swift
+//  UserCategoriesViewController.swift
 //  Jester
 //
-//  Created by Charles Fayal on 8/9/16.
+//  Created by Charles Fayal on 8/30/16.
 //  Copyright © 2016 Charles Fayal. All rights reserved.
 //
 
 import UIKit
-
-class AddCategoriesViewController: ParseViewController, CategoriesTableViewController , UITableViewDelegate, UITableViewDataSource {
+import Parse // TODO why is this not handed down from parse view controller
+class UserCategoriesViewController:ParseViewController, CategoriesTableViewController , UITableViewDelegate, UITableViewDataSource  {
     var categories = ["Humor", "Sports", "Action", "Stories","Daily Funny"]
-    var newContentProfile = ContentProfile()
-    
+    var usersCategories = [String]()
+    var currentUser:PFUser!
     @IBOutlet weak var tableView: UITableView!
-    
-    @IBAction func postButton(sender: AnyObject) {
-        contentManager.newPost(newContentProfile, sender: self)
-    }
+
     @IBAction override func returnButton(sender: AnyObject) {
         self.performSegueWithIdentifier("unwindToMainScreen", sender: self)
     }
-    override func finishedPosting(){
-        self.performSegueWithIdentifier("unwindToMainScreen", sender: self)
 
-    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
@@ -34,32 +28,44 @@ class AddCategoriesViewController: ParseViewController, CategoriesTableViewContr
         let category = categories[indexPath.row]
         cell.tableViewController = self
         cell.setCellCategory(category)
+        if usersCategories.contains(category){
+            cell.selectButton(self)
+        }
         return cell
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-       let cell =  tableView.cellForRowAtIndexPath(indexPath) as! AddCategoriesTableViewCell
-        if cell.categorySelected {
-            newContentProfile.addCategory(cell.category)
+
+    func addCategory(category:String){
+        print("Adding \(category) to user")
+        if usersCategories.contains(category){
         } else {
-           newContentProfile.removeCategory(cell.category)
+            currentUser.addObject(category, forKey: "categories")
+            currentUser.saveInBackground()
         }
     }
-    func addCategory(category:String){
-        newContentProfile.addCategory(category)
-    }
     func removeCategory(category:String){
-        newContentProfile.removeCategory(category)
+        print("Removing \(category) to user")
+        usersCategories = currentUser.objectForKey("categories") as! [String]
+        if usersCategories.contains(category){
+            currentUser.removeObject(category, forKey: "categories")
+            currentUser.saveInBackground()
+        } else {
+            
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Adding categories view controller loaded")
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        currentUser = PFUser.currentUser()! // should use some checking here
+        usersCategories = currentUser.objectForKey("categories") as! [String]
+
+        print("usere categories \(usersCategories)")
+        // Do any additional setup after loading the view.
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
     /*
     // MARK: - Navigation
